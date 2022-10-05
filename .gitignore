@@ -5,6 +5,10 @@
 /.pnp
 .pnp.js
 
+# sanity
+/sanity-rmu/node_modules
+/sanity-rmu/config
+
 # testing
 /coverage
 
