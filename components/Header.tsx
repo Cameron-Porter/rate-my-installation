@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import rmu from "../public/media/rmu.png";
+import React from "react";
 
 function Header() {
   return (

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import React from "react";
 import lh from "../public/media/lighthouse-w.png";
 
 function Banner() {
@@ -12,8 +13,7 @@ function Banner() {
           , shining a light on military units
         </h1>
         <h2>
-          An effective way to get insights about your future unit. Helping you
-          plan that next move.
+          An effective way to get insights about your future unit. Helping you plan your next move.
         </h2>
       </div>
       <div className="hidden md:inline-flex">
