@@ -18,3 +18,16 @@ export interface Unit {
   };
   body: [object];
 }
+
+export interface Branch {
+  _id: string;
+  name: string;
+  image: {
+    asset: {
+      url: string;
+    };
+  };
+  slug: {
+    current: string;
+  };
+}
