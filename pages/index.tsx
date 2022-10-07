@@ -9,10 +9,14 @@ interface Props {
   units: [Unit];
 }
 
+function truncate(str: string, n: number) {
+  return str?.length > n ? str.substr(0, n - 1) + "..." : str;
+}
+
 export default function Home({ units }: Props) {
   console.log(units);
   return (
-    <div className="max-w-7xl mx-auto">
+    <div className="">
       <Head>
         <title>Rate My Unit</title>
         <link rel="icon" href="/favicon.ico" />
@@ -32,7 +36,7 @@ export default function Home({ units }: Props) {
                 <div>
                   <p className="font-bold text-lg">{unit.title}</p>
                   <p className="text-gray-500 text-xs">{unit.branch.name}</p>
-                  <p className="text-md">{unit.description}</p>
+                  <p className="text-md">{truncate(unit.description, 150)}</p>
                 </div>
                 <img
                   className="h-12 w-12 rounded-full"

@@ -22,7 +22,7 @@ function Header() {
         </div>
       </div>
       <div className="flex items-center space-x-5 text-blue-700">
-        <h3 className="cursor-pointer border px-4 py-1 rounded-full">
+        <h3 className="cursor-pointer border px-4 py-1 rounded-full hover:bg-blue-700 hover:text-white">
           Sign In
         </h3>
       </div>
