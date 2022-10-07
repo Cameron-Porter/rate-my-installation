@@ -17,15 +17,7 @@ function Banner() {
           Helping you plan your next move through first hand insights.
         </h2>
       </div>
-      <div className="hidden md:inline-flex">
-        <Image
-          className="object-contain h-32 lg:h-full"
-          src={lh}
-          alt=""
-          width="400"
-          height="400"
-        />
-      </div>
+      <div className="hidden md:inline-flex"></div>
       <div className="bg-gradient-to-b from-transparent via-white/[.6] to-white h-[10rem] w-full mb-7"></div>
     </div>
   );
