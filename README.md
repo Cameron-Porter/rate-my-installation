@@ -1,6 +1,28 @@
-# Next.js + Tailwind CSS Example
+# Rate My Unit
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.0)](https://tailwindcss.com/blog/tailwindcss-v3) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+This is a personal project intended to help better inform military service members of the pros/cons of each installation they may be assigned to.
+
+With this project I am learning about static site regeneration as well as incremental site regeneration and the advantages they offer. It is also an opportunity to become more familiar with typescript and utilizing a CMS.
+
+#### To-Do:
+
+- Setup Projects
+- Setup Actions
+- Implement PR Template
+- Implement Issue Template
+
+## Technologies
+
+- Typescript
+- Javascript
+- Next.js
+- GROQ
+- Sanity.io
+- OAuth
+
+## View Deployment
+
+[Current Deployment](http://rate-my-unit.vercel.app/)
 
 ## Deploy your own
 
