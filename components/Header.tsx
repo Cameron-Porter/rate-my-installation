@@ -3,10 +3,15 @@ import Image from "next/image";
 import rmu from "../public/media/rmu.png";
 import React from "react";
 
+const styles = {
+  navLinks:
+    "cursor-pointer bg-left-bottom bg-gradient-to-r from-yellow-500 to-yellow-500 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out text-xl p-3",
+};
+
 function Header() {
   return (
     <header className="flex justify-between p-5 max-w-7xl mx-auto">
-      <div className="flex items-center space-x-5">
+      <div className="flex items-center space-x-10">
         <Link href="/">
           <Image
             className="w-44 object-contain cursor-pointer"
@@ -16,9 +21,17 @@ function Header() {
             height="100"
           />
         </Link>
-        <div className="hidden sm:inline-flex items-center space-x-5">
-          <h3 className="cursor-pointer">About</h3>
-          <h3 className="cursor-pointer">Contact</h3>
+        <div className="flex space-x-10">
+          <Link href="/about">
+            <span className="group transition-all duration-300 ease-in-out">
+              <h3 className={styles.navLinks}>About</h3>
+            </span>
+          </Link>
+          <Link href="/contact">
+            <span className="group transition-all duration-300 ease-in-out">
+              <h3 className={styles.navLinks}>Contact</h3>
+            </span>
+          </Link>
         </div>
       </div>
       <div className="flex items-center space-x-5 text-blue-700">
