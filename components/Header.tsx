@@ -11,17 +11,17 @@ const styles = {
 function Header() {
   return (
     <header className="flex justify-between p-5 max-w-7xl mx-auto">
-      <div className="flex items-center space-x-10">
+      <div className="flex items-center sm:space-x-10">
         <Link href="/">
           <Image
             className="w-44 object-contain cursor-pointer"
             src={rmu}
             alt=""
-            width="100"
-            height="100"
+            width="70"
+            height="70"
           />
         </Link>
-        <div className="flex space-x-10">
+        <div className="flex sm:space-x-10">
           <Link href="/about">
             <span className="group transition-all duration-300 ease-in-out">
               <h3 className={styles.navLinks}>About</h3>
