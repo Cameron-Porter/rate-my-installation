@@ -20,6 +20,10 @@ With this project I am learning about static site regeneration as well as increm
 - Sanity.io
 - OAuth
 
+## Preview
+
+![Site Preview](https://github.com/Cameron-Porter/rate-my-unit/blob/main/public/media/rmu.gif)
+
 ## View Deployment
 
 [Current Deployment](http://rate-my-unit.vercel.app/)
