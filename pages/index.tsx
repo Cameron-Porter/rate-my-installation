@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Banner from "../components/Banner";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 import { sanityClient, urlFor } from "../sanity";
 import { Unit, Branch } from "../typings";
 
@@ -58,7 +59,7 @@ export default function Home({ units, branches }: Props) {
             key={unit._id}
             href={`/branch/${unit.branch.name}/unit/${unit.slug.current}`}
           >
-            <div className="border rounded-lg group coursor-pointer overflow-hidden">
+            <div className="border rounded-lg group coursor-pointer overflow-hidden m-3">
               <img
                 className="h-60 w-full object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out"
                 src={urlFor(unit.mainImage).url()!}
@@ -80,6 +81,7 @@ export default function Home({ units, branches }: Props) {
           </Link>
         ))}
       </div>
+      <Footer />
     </div>
   );
 }
