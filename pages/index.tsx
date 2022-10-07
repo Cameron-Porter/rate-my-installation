@@ -59,7 +59,7 @@ export const getServerSideProps = async () => {
     description,
     mainImage,
     slug
-  }`;
+  } | order(title asc)`;
 
   const units = await sanityClient.fetch(query);
 
