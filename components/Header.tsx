@@ -10,7 +10,7 @@ const styles = {
 
 function Header() {
   return (
-    <header className="flex justify-between p-5 max-w-7xl mx-auto">
+    <header className="flex justify-between p-5 mx-auto">
       <div className="flex items-center sm:space-x-10">
         <Link href="/">
           <Image
