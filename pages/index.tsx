@@ -55,10 +55,7 @@ export default function Home({ units, branches }: Props) {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:gap-6 p-6 lg:grid-cols-3 gap-3 justify-between">
         {units.map((unit) => (
-          <Link
-            key={unit._id}
-            href={`/branch/${unit.branch.name}/unit/${unit.slug.current}`}
-          >
+          <Link key={unit._id} href={`unit/${unit.slug.current}`}>
             <div className="border rounded-lg group coursor-pointer overflow-hidden m-3">
               <img
                 className="h-60 w-full object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out"
@@ -92,7 +89,8 @@ export const getServerSideProps = async () => {
     title,
     branch-> {
       name,
-      image
+      image,
+      slug
     },
     description,
     mainImage,

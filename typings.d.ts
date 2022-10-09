@@ -1,11 +1,14 @@
 // Defining type for prop Unit
 export interface Unit {
   _id: string;
-  _createAt: string;
+  _createdAt: string;
   title: string;
   branch: {
     name: string;
     image: string;
+    slug: {
+      current: string;
+    };
   };
   description: string;
   mainImage: {
