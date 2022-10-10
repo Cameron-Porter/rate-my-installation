@@ -40,6 +40,7 @@ export interface Branch {
     current: string;
   };
   description: string;
+  units: Unit[];
 }
 
 export interface Comment {
