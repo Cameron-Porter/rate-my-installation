@@ -268,7 +268,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     title,
     branch-> {
       name,
-      image
+      logo
     },
     'comments': *[
       _type == "comment" &&
