@@ -1,13 +1,14 @@
 import Link from "next/link";
 import { GetStaticProps } from "next/types";
 import React, { useState } from "react";
-import Footer from "../../components/Footer";
-import Header from "../../components/Header";
-import { sanityClient, urlFor } from "../../sanity";
-import { Branch } from "../../typings";
+import Footer from "../../../components/Footer";
+import Header from "../../../components/Header";
+import { sanityClient, urlFor } from "../../../sanity";
+import { Branch, Unit } from "../../../typings";
 
 interface Props {
   branch: Branch;
+  unit: Unit;
 }
 
 function truncate(str: string, n: number) {
@@ -36,7 +37,7 @@ const styles = {
   },
 };
 
-function Branch({ branch }: Props) {
+function Branch({ branch, unit }: Props) {
   return (
     <main>
       <Header />
@@ -67,7 +68,7 @@ function Branch({ branch }: Props) {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 p-6 lg:grid-cols-4 xl:grid-cols-5 justify-around">
         {branch.units.map((unit) => (
-          <Link key={unit._id} href={`unit/${unit.slug.current}`}>
+          <Link key={unit._id} href={`/unit/${unit.slug.current}`}>
             <div className="border rounded-lg group cursor-pointer overflow-hidden m-3 shadow">
               <img
                 className="h-60 w-full object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out"
@@ -157,18 +158,23 @@ function Branch({ branch }: Props) {
 export default Branch;
 
 export const getStaticPaths = async () => {
-  const query = `*[_type == "branch"]{
+  const query = `*[_type == "unit"]{
     _id,
     slug {
       current
+    },
+    "branch": *[_type == "branch" && name == "United States Army"][0]{
+      slug {
+      current
+    },
     }
   }`;
 
-  const branches = await sanityClient.fetch(query);
+  const units = await sanityClient.fetch(query);
 
-  const paths = branches.map((branch: Branch) => ({
+  const paths = units.map((unit: Unit) => ({
     params: {
-      slug: branch.slug.current,
+      branchName: unit.branch.slug.current,
     },
   }));
 
@@ -179,7 +185,7 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const query = `*[ _type == "branch" && slug.current == $slug][0]{
+  const query = `*[ _type == "branch" && slug.current == $branchName][0]{
     _id,
     name,
     logo,
@@ -196,7 +202,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     }`;
 
   const branch = await sanityClient.fetch(query, {
-    slug: params?.slug,
+    branchName: params?.branchName,
   });
 
   if (!branch) {
