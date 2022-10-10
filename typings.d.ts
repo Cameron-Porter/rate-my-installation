@@ -10,6 +10,7 @@ export interface Unit {
       current: string;
     };
   };
+  comments: Comment[];
   description: string;
   mainImage: {
     asset: {
@@ -33,4 +34,19 @@ export interface Branch {
   slug: {
     current: string;
   };
+}
+
+export interface Comment {
+  approved: boolean;
+  comment: string;
+  email: string;
+  name: string;
+  unit: {
+    _ref: string;
+    _type: string;
+  };
+  _createdAt: string;
+  _id: string;
+  _type: string;
+  _updatedAt: string;
 }
