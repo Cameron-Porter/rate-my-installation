@@ -52,10 +52,10 @@ export default function Home({ units, branches }: Props) {
       <div className="text-3xl py-[5rem]">
         <h2 className="text-center">Top 10 Rated Units:</h2>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:gap-6 p-6 lg:grid-cols-3 gap-3 justify-between">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 p-6 lg:grid-cols-4 xl:grid-cols-5 justify-around">
         {units.map((unit) => (
           <Link key={unit._id} href={`unit/${unit.slug.current}`}>
-            <div className="border rounded-lg group cursor-pointer overflow-hidden m-3">
+            <div className="border rounded-lg group cursor-pointer overflow-hidden m-3 shadow">
               <img
                 className="h-60 w-full object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out"
                 src={urlFor(unit.mainImage).url()!}

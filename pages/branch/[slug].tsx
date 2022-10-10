@@ -68,7 +68,7 @@ function Branch({ branch }: Props) {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 p-6 lg:grid-cols-4 xl:grid-cols-5 justify-around">
         {branch.units.map((unit) => (
           <Link key={unit._id} href={`unit/${unit.slug.current}`}>
-            <div className="border rounded-lg group cursor-pointer overflow-hidden m-3">
+            <div className="border rounded-lg group cursor-pointer overflow-hidden m-3 shadow">
               <img
                 className="h-60 w-full object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out"
                 src={urlFor(unit.mainImage).url()!}
