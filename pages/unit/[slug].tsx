@@ -244,6 +244,11 @@ export const getStaticPaths = async () => {
     _id,
     slug {
       current
+    },
+    "branch": *[_type == "branch" && name == "United States Army"][0]{
+      slug {
+      current
+    },
     }
   }`;
 
@@ -251,7 +256,7 @@ export const getStaticPaths = async () => {
 
   const paths = units.map((unit: Unit) => ({
     params: {
-      slug: unit.slug.current,
+      slug: `${unit.branch.slug.current}/unit/${unit.slug.current}`,
     },
   }));
 
@@ -268,7 +273,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     title,
     branch-> {
       name,
-      logo
+      logo,
+      slug
     },
     'comments': *[
       _type == "comment" &&
