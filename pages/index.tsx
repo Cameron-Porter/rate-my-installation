@@ -36,7 +36,7 @@ export default function Home({ units, branches }: Props) {
             <div className="cursor-pointer group overflow-hidden text-center m-3 w-[9rem]">
               <img
                 className="h-[9rem] w-auto mx-auto grayscale object-conatin group-hover:scale-105 transition-transform duration-300 ease-in-out group-hover:grayscale-0"
-                src={urlFor(branch.image).url()!}
+                src={urlFor(branch.logo).url()!}
                 alt=""
               />
               <div>
@@ -69,7 +69,7 @@ export default function Home({ units, branches }: Props) {
                 </div>
                 <img
                   className="h-12 w-12 rounded-full"
-                  src={urlFor(unit.branch.image).url()!}
+                  src={urlFor(unit.branch.logo).url()!}
                   alt=""
                 />
               </div>
@@ -88,7 +88,7 @@ export const getServerSideProps = async () => {
     title,
     branch-> {
       name,
-      image,
+      logo,
       slug
     },
     description,
@@ -99,7 +99,7 @@ export const getServerSideProps = async () => {
   const queryBranches = `*[_type == "branch"]{
     _id,
     name,
-    image,
+    logo,
     slug
   } | order(name asc)`;
 
