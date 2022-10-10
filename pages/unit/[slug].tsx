@@ -216,13 +216,14 @@ function Unit({ unit }: Props) {
       )}
 
       {/* Comments */}
-      <div className="flex flex-col p-10 my-10 max-w-2xl mx-auto shadow space-y-2">
-        <h3 className="text-4xl">Ratings</h3>
-        <hr className="pb-2" />
+      <div className="p-10 max-w-3xl mx-auto space-y-2">
+        <h3 className="text-4xl mb-10 text-center">Ratings</h3>
+
+        <hr className={styles.lineStyle[unit.branch.name as keyof object]} />
 
         {unit.comments.map((comment) => (
-          <div key={comment._id}>
-            <p>
+          <div className="p-1" key={comment._id}>
+            <p className="shadow p-10 w-2xl my-4">
               <span
                 className={styles.textColor[unit.branch.name as keyof object]}
               >
