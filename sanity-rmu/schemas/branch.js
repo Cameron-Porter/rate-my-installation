@@ -18,31 +18,31 @@ export default {
       },
     },
     {
-      name: "image",
-      title: "Image",
+      name: "logo",
+      title: "Logo",
       type: "image",
       options: {
         hotspot: true,
       },
     },
     {
-      name: "bio",
-      title: "Bio",
-      type: "array",
-      of: [
-        {
-          title: "Block",
-          type: "block",
-          styles: [{ title: "Normal", value: "normal" }],
-          lists: [],
-        },
-      ],
+      name: "mainImage",
+      title: "Main image",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
+    },
+    {
+      name: "description",
+      title: "Description",
+      type: "string",
     },
   ],
   preview: {
     select: {
       title: "name",
-      media: "image",
+      media: "logo",
     },
   },
 };

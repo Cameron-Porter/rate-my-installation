@@ -5,7 +5,7 @@ export interface Unit {
   title: string;
   branch: {
     name: string;
-    image: string;
+    logo: string;
     slug: {
       current: string;
     };
@@ -26,7 +26,12 @@ export interface Unit {
 export interface Branch {
   _id: string;
   name: string;
-  image: {
+  logo: {
+    asset: {
+      url: string;
+    };
+  };
+  mainImage: {
     asset: {
       url: string;
     };
@@ -34,6 +39,7 @@ export interface Branch {
   slug: {
     current: string;
   };
+  description: string;
 }
 
 export interface Comment {

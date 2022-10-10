@@ -126,7 +126,7 @@ function Unit({ unit }: Props) {
           <div className="space-x-2 flex">
             <img
               className="h-10 w-10 rounded-full"
-              src={urlFor(unit.branch.image).url()!}
+              src={urlFor(unit.branch.logo).url()!}
               alt=""
             />
             <h1 className="text-3xl flex items-end">{unit.title}</h1>
@@ -268,7 +268,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     title,
     branch-> {
       name,
-      image
+      logo
     },
     'comments': *[
       _type == "comment" &&
