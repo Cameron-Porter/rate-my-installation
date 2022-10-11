@@ -163,7 +163,7 @@ export const getStaticPaths = async () => {
     slug {
       current
     },
-    "branch": *[_type == "branch" && name == "United States Army"][0]{
+    "branch": *[_type == "branch" && name == $branch][0]{
       slug {
       current
     },
@@ -185,7 +185,7 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const query = `*[ _type == "branch" && slug.current == $branchName][0]{
+  const query = `*[ _type == "branch" && slug.current == $branch.slug][0]{
     _id,
     name,
     logo,
