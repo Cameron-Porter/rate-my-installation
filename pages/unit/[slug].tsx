@@ -265,7 +265,7 @@ export const getStaticPaths = async () => {
     slug {
       current
     },
-    "branch": *[_type == "branch" && name == "United States Army"][0]{
+    branch->{
       slug {
       current
     },
