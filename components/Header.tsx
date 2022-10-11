@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import rmu from "../public/media/rmu.png";
 import React from "react";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 const styles = {
   navLinks:
@@ -9,6 +10,8 @@ const styles = {
 };
 
 function Header() {
+  const { data: session } = useSession();
+  console.log("Session Data: ", session?.expires);
   return (
     <header className="flex justify-between p-5 mx-auto">
       <div className="flex items-center sm:space-x-10">
@@ -35,8 +38,11 @@ function Header() {
         </div>
       </div>
       <div className="flex items-center space-x-5 text-blue-700">
-        <h3 className="cursor-pointer border px-4 py-1 rounded-full hover:bg-blue-700 hover:text-white">
-          Sign In
+        <h3
+          onClick={!session ? () => signIn() : () => signOut()}
+          className="cursor-pointer border px-4 py-1 rounded-full hover:bg-blue-700 hover:text-white"
+        >
+          {session ? `Log Out` : `Sign In`}
         </h3>
       </div>
     </header>
