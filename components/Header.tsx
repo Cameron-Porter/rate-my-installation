@@ -11,7 +11,6 @@ const styles = {
 
 function Header() {
   const { data: session } = useSession();
-  console.log("Session Data: ", session?.expires);
   return (
     <header className="flex justify-between p-5 mx-auto">
       <div className="flex items-center sm:space-x-10">

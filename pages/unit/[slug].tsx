@@ -4,6 +4,7 @@ import Header from "../../components/Header";
 import { sanityClient, urlFor } from "../../sanity";
 import { Unit } from "../../typings";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { useSession } from "next-auth/react";
 
 interface Props {
   unit: Unit;
@@ -91,6 +92,7 @@ const styles = {
 };
 
 function Unit({ unit }: Props) {
+  const { data: session } = useSession();
   const [submitted, setSubmitted] = useState(false);
   const {
     register,
@@ -145,74 +147,91 @@ function Unit({ unit }: Props) {
       </article>
       <hr className={styles.lineStyle[unit.branch.name as keyof object]} />
 
-      {submitted ? (
-        <div className="flex flex-col p-10 my-10 bg-blue-500 text-white max-w-2xl mx-auto">
-          <h3 className="text-3xl font-bold">Thank you for your Rating!</h3>
-          <p>Once your Rating has been approved, it will appear below.</p>
-        </div>
-      ) : (
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="flex flex-col p-5 max-w-2xl mx-auto mb-10"
-        >
-          <h3 className="text-sm">
-            <span
-              className={styles.textColor[unit.branch.name as keyof object]}
-            >
-              Been stationed here?
-            </span>
-          </h3>
-          <h4 className="text-3xl font-bold">Leave a Rating below!</h4>
-          <hr className="py-3 mt-2" />
-
-          <input
-            {...register("_id")}
-            type="hidden"
-            name="_id"
-            value={unit._id}
-          />
-          <label className={styles.form.label}>
-            <span className={styles.form.span}>Name</span>
-            <input
-              {...register("name", { required: true })}
-              className={styles.form.inputs[unit.branch.name as keyof object]}
-              placeholder="Your Name Here"
-              type="text"
-            />
-          </label>
-          <label className={styles.form.label}>
-            <span className={styles.form.span}>Email</span>
-            <input
-              {...register("email", { required: true })}
-              className={styles.form.inputs[unit.branch.name as keyof object]}
-              placeholder="Your Email Here"
-              type="email"
-            />
-          </label>
-          <label className={styles.form.label}>
-            <span className={styles.form.span}>Comment</span>
-            <textarea
-              {...register("comment")}
-              className={styles.form.textarea[unit.branch.name as keyof object]}
-              placeholder="Your Comment Here"
-              rows={8}
-            />
-          </label>
-          <div className="flex flex-col p-5">
-            {errors.name && (
-              <span className="text-red-500">- The Name Field is required</span>
-            )}
-            {errors.email && (
-              <span className="text-red-500">
-                - The Email Field is required
-              </span>
-            )}
+      {session ? (
+        submitted ? (
+          <div className="flex flex-col p-10 my-10 bg-blue-500 text-white max-w-2xl mx-auto">
+            <h3 className="text-3xl font-bold">Thank you for your Rating!</h3>
+            <p>Once your Rating has been approved, it will appear below.</p>
           </div>
-          <input
-            type="submit"
-            className={styles.form.submit[unit.branch.name as keyof object]}
-          />
-        </form>
+        ) : (
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="flex flex-col p-5 max-w-2xl mx-auto mb-10"
+          >
+            <h3 className="text-sm">
+              <span
+                className={styles.textColor[unit.branch.name as keyof object]}
+              >
+                Been stationed here?
+              </span>
+            </h3>
+            <h4 className="text-3xl font-bold">Leave a Rating below!</h4>
+            <hr className="py-3 mt-2" />
+
+            <input
+              {...register("_id")}
+              type="hidden"
+              name="_id"
+              value={unit._id}
+            />
+            <label className={styles.form.label}>
+              <span className={styles.form.span}>Name</span>
+              <input
+                {...register("name", { required: true })}
+                className={styles.form.inputs[unit.branch.name as keyof object]}
+                placeholder="Your Name Here"
+                type="text"
+              />
+            </label>
+            <label className={styles.form.label}>
+              <span className={styles.form.span}>Email</span>
+              <input
+                {...register("email", { required: true })}
+                className={styles.form.inputs[unit.branch.name as keyof object]}
+                placeholder="Your Email Here"
+                type="email"
+              />
+            </label>
+            <label className={styles.form.label}>
+              <span className={styles.form.span}>Comment</span>
+              <textarea
+                {...register("comment")}
+                className={
+                  styles.form.textarea[unit.branch.name as keyof object]
+                }
+                placeholder="Your Comment Here"
+                rows={8}
+              />
+            </label>
+            <div className="flex flex-col p-5">
+              {errors.name && (
+                <span className="text-red-500">
+                  - The Name Field is required
+                </span>
+              )}
+              {errors.email && (
+                <span className="text-red-500">
+                  - The Email Field is required
+                </span>
+              )}
+            </div>
+            <input
+              type="submit"
+              className={styles.form.submit[unit.branch.name as keyof object]}
+            />
+          </form>
+        )
+      ) : (
+        <div className="flex flex-col p-10 my-10 bg-blue-500 text-white max-w-2xl mx-auto">
+          <h3 className="text-3xl font-bold">
+            Please Sign In to Leave a Rating
+          </h3>
+          <p>
+            Signing in with ID.me and your dot MIL email will earn you a
+            Verified badge on all your comments. This adds to your creditability
+            as a reviewer.
+          </p>
+        </div>
       )}
 
       {/* Comments */}
