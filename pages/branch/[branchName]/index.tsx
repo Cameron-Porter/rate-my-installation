@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { GetStaticProps } from "next/types";
-import React, { useState } from "react";
+import React from "react";
 import Footer from "../../../components/Footer";
 import Header from "../../../components/Header";
 import { sanityClient, urlFor } from "../../../sanity";
@@ -8,7 +8,6 @@ import { Branch, Unit } from "../../../typings";
 
 interface Props {
   branch: Branch;
-  unit: Unit;
 }
 
 function truncate(str: string, n: number) {
@@ -37,7 +36,7 @@ const styles = {
   },
 };
 
-function Branch({ branch, unit }: Props) {
+function Branch({ branch }: Props) {
   return (
     <main>
       <Header />
@@ -68,7 +67,10 @@ function Branch({ branch, unit }: Props) {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 p-6 lg:grid-cols-4 xl:grid-cols-5 justify-around">
         {branch.units.map((unit) => (
-          <Link key={unit._id} href={`/unit/${unit.slug.current}`}>
+          <Link
+            key={unit._id}
+            href={`${branch.slug.current}/unit/${unit.slug.current}`}
+          >
             <div className="border rounded-lg group cursor-pointer overflow-hidden m-3 shadow">
               <img
                 className="h-60 w-full object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out"
