@@ -323,6 +323,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       unit,
     },
-    revalidate: 43200, // 86400 for after 1 day, updates old cached version...ISR implementation
+    revalidate: 60, // 86400 for after 1 day, updates old cached version...ISR implementation
   };
 };
