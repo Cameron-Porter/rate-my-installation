@@ -5,7 +5,6 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { sanityClient, urlFor } from "../sanity";
 import { Unit, Branch } from "../typings";
-import Branch from "./branch/[branchName]";
 
 interface Props {
   topUnits: [Unit];
