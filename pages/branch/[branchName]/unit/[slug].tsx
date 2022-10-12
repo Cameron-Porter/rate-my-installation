@@ -1,8 +1,8 @@
 import { GetStaticProps } from "next/types";
 import React, { useState } from "react";
-import Header from "../../components/Header";
-import { sanityClient, urlFor } from "../../sanity";
-import { Unit } from "../../typings";
+import Header from "../../../../components/Header";
+import { sanityClient, urlFor } from "../../../../sanity";
+import { Unit } from "../../../../typings";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useSession } from "next-auth/react";
 
@@ -276,7 +276,8 @@ export const getStaticPaths = async () => {
 
   const paths = units.map((unit: Unit) => ({
     params: {
-      slug: `${unit.branch.slug.current}/unit/${unit.slug.current}`,
+      slug: unit.slug.current,
+      branchName: unit.branch.slug.current,
     },
   }));
 
@@ -309,6 +310,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   const unit = await sanityClient.fetch(query, {
     slug: params?.slug,
+    branchName: params?.branchName,
   });
 
   if (!unit) {
