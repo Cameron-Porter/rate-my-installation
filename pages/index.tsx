@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { sanityClient, urlFor } from "../sanity";
 import { Unit, Branch } from "../typings";
+import Branch from "./branch/[branchName]";
 
 interface Props {
   topUnits: [Unit];
@@ -55,7 +56,10 @@ export default function Home({ topUnits, bottomUnits, branches }: Props) {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 p-6 lg:grid-cols-4 xl:grid-cols-5 justify-around">
         {topUnits.map((unit) => (
-          <Link key={unit._id} href={`unit/${unit.slug.current}`}>
+          <Link
+            key={unit._id}
+            href={`branch/${unit.branch.slug.current}/unit/${unit.slug.current}`}
+          >
             <div className="border rounded-lg group cursor-pointer overflow-hidden m-3 shadow">
               <img
                 className="h-60 w-full object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out"
@@ -140,7 +144,10 @@ export default function Home({ topUnits, bottomUnits, branches }: Props) {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 p-6 lg:grid-cols-4 xl:grid-cols-5 justify-around">
         {bottomUnits.map((unit) => (
-          <Link key={unit._id} href={`unit/${unit.slug.current}`}>
+          <Link
+            key={unit._id}
+            href={`/branch/${unit.branch.slug.current}/unit/${unit.slug.current}`}
+          >
             <div className="border rounded-lg group cursor-pointer overflow-hidden m-3 shadow">
               <img
                 className="h-60 w-full object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out"
@@ -223,7 +230,7 @@ export default function Home({ topUnits, bottomUnits, branches }: Props) {
   );
 }
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const queryTopUnits = `*[_type == "unit"][0...10]{
     _id,
     title,
