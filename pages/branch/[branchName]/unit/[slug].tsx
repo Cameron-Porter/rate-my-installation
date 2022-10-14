@@ -117,6 +117,28 @@ function Unit({ unit }: Props) {
 
   return (
     <main>
+      <head>
+        <title>Real reviews of {unit.title}</title>
+        <link rel="icon" href="/favicon.ico" />
+        <meta
+          name="description"
+          content={`Real reviews of ${unit.title} from those who have been stationed there.`}
+        />
+        <meta
+          property="og:title"
+          content={`Share and view reviews for ${unit.title}`}
+        />
+        <meta
+          property="og:description"
+          content={`Real reviews of ${unit.title} from those who have been stationed there.`}
+        />
+        <meta
+          property="og:url"
+          content={`https://rate-my-unit.vercel.app/branch/${unit.branch.slug.current}/unit/${unit.slug.current}`}
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content={urlFor(unit.mainImage).url()!} />
+      </head>
       <Header />
       <img
         className="w-full h-40 object-cover"
