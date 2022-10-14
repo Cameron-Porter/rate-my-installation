@@ -39,6 +39,28 @@ const styles = {
 function Branch({ branch }: Props) {
   return (
     <main>
+      <head>
+        <title>{branch.name} installations for review</title>
+        <link rel="icon" href="/favicon.ico" />
+        <meta
+          name="description"
+          content={`Select ${branch.name} installations to view and share real reviews from those who have been stationed there.`}
+        />
+        <meta
+          property="og:title"
+          content={`Select ${branch.name} installations to view real reviews from those who have been stationed there.`}
+        />
+        <meta
+          property="og:description"
+          content={`${branch.name} installations for review`}
+        />
+        <meta
+          property="og:url"
+          content={`https://rate-my-unit.vercel.app/branch/${branch.slug.current}`}
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content={urlFor(branch.mainImage).url()!} />
+      </head>
       <Header />
       <img
         className="w-full h-[30rem] object-cover overflow-hidden"
