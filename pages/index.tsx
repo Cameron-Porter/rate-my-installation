@@ -34,7 +34,10 @@ export default function Home({ topUnits, bottomUnits, branches }: Props) {
         />
         <meta property="og:url" content={`https://rate-my-unit.vercel.app`} />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content={`url('../public/media/hero.jpg')`} />
+        <meta
+          property="og:image"
+          content={`https://cdn.sanity.io/images/07k2mc8t/production/e836549abc4c48f00a4d0b6a1b7d16395e359c6e-577x385.webp`}
+        />
         <meta
           property="og:image:alt"
           content="Lighthouse in the middle of the sea"
