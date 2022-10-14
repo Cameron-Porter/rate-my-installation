@@ -88,13 +88,13 @@ function Branch({ branch }: Props) {
       <div className="text-3xl py-[5rem]">
         <h2 className="text-center">Listed Units:</h2>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 p-6 lg:grid-cols-4 xl:grid-cols-5 justify-around">
+      <div className="flex flex-wrap justify-center">
         {branch.units.map((unit) => (
           <Link
             key={unit._id}
             href={`${branch.slug.current}/unit/${unit.slug.current}`}
           >
-            <div className="border rounded-lg group cursor-pointer overflow-hidden m-3 shadow">
+            <div className="w-full mx-[1.5rem] sm:w-[19rem] md:sm:w-[22rem] justify-between sm:mx-[.5rem] border rounded-lg group cursor-pointer overflow-hidden m-3 shadow">
               <img
                 className="h-60 w-full object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out"
                 src={urlFor(unit.mainImage).url()!}
