@@ -3,16 +3,16 @@ import React from "react";
 
 function Banner() {
   return (
-    <div className="justify-between items-center bg-[url('../public/media/hero.jpg')]  bg-cover bg-center lg:py-0">
+    <div className="justify-between items-center bg-[url('../public/media/hero.jpg')]  bg-cover bg-center lg:py-0 saturate-150">
       <div className="bg-gradient-to-b from-white to-transparent h-[4rem] w-full"></div>
       <div className="px-10 space-y-5 py-[8rem]">
-        <h1 className="text-3xl sm:block sm:text-4xl lg:text-6xl max-w-xl">
+        <h1 className="text-3xl font-bold sm:block sm:text-4xl lg:text-6xl max-w-xl">
           <span className="underline decoration-blue-400 decoration-4">
             Rate My Unit
           </span>
           , shining a light on military units
         </h1>
-        <h2 className="">
+        <h2 className="hidden font-bold md:block">
           Helping you plan your next move through first hand insights.
         </h2>
       </div>
