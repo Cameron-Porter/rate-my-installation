@@ -21,7 +21,7 @@ export default function Home({ topUnits, bottomUnits, branches }: Props) {
   return (
     <div className="">
       <Head>
-        <title>Rate My Unit</title>
+        <title>Rate My Installation</title>
         <link rel="icon" href="/favicon.ico" />
         <meta
           name="description"
@@ -36,7 +36,7 @@ export default function Home({ topUnits, bottomUnits, branches }: Props) {
         <meta property="og:type" content="website" />
         <meta
           property="og:image"
-          content={`https://cdn.sanity.io/images/07k2mc8t/production/e836549abc4c48f00a4d0b6a1b7d16395e359c6e-577x385.webp`}
+          content={`https://cdn.sanity.io/images/07k2mc8t/production/d1f10bb9502e1153c5d48b9b47adb09edacf8981-2048x1367.jpg`}
         />
         <meta
           property="og:image:alt"
