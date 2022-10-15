@@ -1,12 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
-import rmu from "../public/media/rmu.png";
+import rmi from "../public/media/black_logo.png";
 import React from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
 
 const styles = {
   navLinks:
-    "cursor-pointer bg-left-bottom bg-gradient-to-r from-yellow-500 to-yellow-500 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out text-xl p-3",
+    "cursor-pointer bg-left-bottom bg-gradient-to-r from-yellow-900 to-yellow-900 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out text-xl p-3",
 };
 
 function Header() {
@@ -17,7 +17,7 @@ function Header() {
         <Link href="/">
           <Image
             className="w-44 object-contain cursor-pointer"
-            src={rmu}
+            src={rmi}
             alt=""
             width="70"
             height="70"
