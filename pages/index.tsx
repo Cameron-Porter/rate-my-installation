@@ -21,7 +21,7 @@ export default function Home({ topUnits, bottomUnits, branches }: Props) {
   return (
     <div className="">
       <Head>
-        <title>Rate My Unit</title>
+        <title>Rate My Installation</title>
         <link rel="icon" href="/favicon.ico" />
         <meta
           name="description"
