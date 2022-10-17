@@ -46,8 +46,12 @@ export interface Branch {
 export interface Comment {
   approved: boolean;
   comment: string;
-  email: string;
-  name: string;
+  baseAmenities: number;
+  baseLogistics: number;
+  housingOptions: number;
+  localCommunity: number;
+  localRecreation: number;
+  schoolDistrict: number;
   unit: {
     _ref: string;
     _type: string;

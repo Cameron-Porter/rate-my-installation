@@ -22,7 +22,7 @@ export default function Home({ topUnits, bottomUnits, branches }: Props) {
     <div className="">
       <Head>
         <title>Rate My Installation</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="../favicon.ico" />
         <meta
           name="description"
           content={`A place for servicemen and women to share and view reviews of their branch's installations.`}
@@ -94,7 +94,16 @@ export default function Home({ topUnits, bottomUnits, branches }: Props) {
                     <p className="text-gray-500 text-xs">{unit.branch.name}</p>
                     <p className="flex space-x-2 font-italic text-md">
                       <p>Rated: </p>
-                      <Stars />
+                      <Stars
+                        h={20}
+                        w={20}
+                        initRating={5}
+                        onRatingChanged={(newRating: any) => {
+                          console.log(
+                            `NEW RATING (${newRating}) DETECTED FOR 2.. SAVING TO DB`
+                          );
+                        }}
+                      />
                     </p>
                   </div>
                   <img
@@ -136,7 +145,16 @@ export default function Home({ topUnits, bottomUnits, branches }: Props) {
                     <p className="text-gray-500 text-xs">{unit.branch.name}</p>
                     <p className="flex space-x-2 font-italic text-md">
                       <p>Rated: </p>
-                      <Stars />
+                      <Stars
+                        h={20}
+                        w={20}
+                        initRating={5}
+                        onRatingChanged={(newRating: any) => {
+                          console.log(
+                            `NEW RATING (${newRating}) DETECTED FOR 2.. SAVING TO DB`
+                          );
+                        }}
+                      />
                     </p>
                   </div>
                   <img
