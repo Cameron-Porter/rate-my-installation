@@ -6,7 +6,7 @@ import { Unit } from "../../../../typings";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useSession } from "next-auth/react";
 import Form from "../../../../components/Form";
-import StarDisplay from "../../../../components/StarDisplay";
+import CommentCard from "../../../../components/CommentCard";
 
 interface Props {
   unit: Unit;
@@ -181,80 +181,15 @@ function Unit({ unit }: Props) {
 
         {unit.comments.map((comment) => (
           <div className="p-1 " key={comment._id}>
-            <div className="shadow p-10 w-2xl my-4 flex flex-col">
-              <div className="flex justify-around mb-6">
-                <div className="space-y-5">
-                  <p className="">
-                    Base Amenities:{" "}
-                    <span>
-                      <StarDisplay
-                        initRating={comment.baseAmenities}
-                        h={20}
-                        w={20}
-                      />
-                    </span>
-                  </p>
-                  <p className="">
-                    Base Logistics:{" "}
-                    <span>
-                      <StarDisplay
-                        initRating={comment.baseLogistics}
-                        h={20}
-                        w={20}
-                      />
-                    </span>
-                  </p>
-                  <p className="">
-                    Housing Options:{" "}
-                    <span>
-                      <StarDisplay
-                        initRating={comment.housingOptions}
-                        h={20}
-                        w={20}
-                      />
-                    </span>
-                  </p>
-                </div>
-                <div className="space-y-5">
-                  <p className="">
-                    Local Community:{" "}
-                    <span>
-                      <StarDisplay
-                        initRating={comment.localCommunity}
-                        h={20}
-                        w={20}
-                      />
-                    </span>
-                  </p>
-                  <p className="">
-                    Local Recreation:{" "}
-                    <span>
-                      <StarDisplay
-                        initRating={comment.localRecreation}
-                        h={20}
-                        w={20}
-                      />
-                    </span>
-                  </p>
-                  <p className="">
-                    School District:{" "}
-                    <span>
-                      <StarDisplay
-                        initRating={comment.schoolDistrict}
-                        h={20}
-                        w={20}
-                      />
-                    </span>
-                  </p>
-                </div>
-              </div>
-              <div>
-                <p className="underline text-center font-bold">
-                  Additional Details:
-                </p>
-                <p>{comment.comment}</p>
-              </div>
-            </div>
+            <CommentCard
+              baseAmenities={comment.baseAmenities}
+              baseLogistics={comment.baseLogistics}
+              housingOptions={comment.housingOptions}
+              localCommunity={comment.localCommunity}
+              localRecreation={comment.localRecreation}
+              schoolDistrict={comment.schoolDistrict}
+              comment={comment.comment}
+            />
           </div>
         ))}
       </div>
