@@ -113,7 +113,16 @@ function Branch({ branch }: Props) {
                       >
                         Rated:{" "}
                       </span>
-                      <Stars />
+                      <Stars
+                        h={20}
+                        w={20}
+                        initRating={5}
+                        onRatingChanged={(newRating: any) => {
+                          console.log(
+                            `NEW RATING (${newRating}) DETECTED FOR 2.. SAVING TO DB`
+                          );
+                        }}
+                      />
                     </p>
                   </div>
                   <img
