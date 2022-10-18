@@ -16,6 +16,11 @@ export default {
       description: "Comments won't show on site without approval",
     },
     {
+      title: "Email",
+      name: "email",
+      type: "string",
+    },
+    {
       name: "baseAmenities",
       title: "Base Amenities",
       type: "number",

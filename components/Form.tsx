@@ -320,8 +320,7 @@ function Form({ unit }: Props) {
           <h3 className="text-3xl text-center font-bold">
             Please Sign In to Leave a Rating
           </h3>
-          <p>
-          </p>
+          <p></p>
         </div>
       )}
     </div>
