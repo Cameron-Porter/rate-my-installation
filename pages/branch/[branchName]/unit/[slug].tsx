@@ -3,20 +3,15 @@ import React, { useState } from "react";
 import Header from "../../../../components/Header";
 import { sanityClient, urlFor } from "../../../../sanity";
 import { Unit } from "../../../../typings";
-import { useForm, SubmitHandler } from "react-hook-form";
 import { useSession } from "next-auth/react";
 import Form from "../../../../components/Form";
 import CommentCard from "../../../../components/CommentCard";
+import FullStarDisplay from "../../../../components/FullStarDisplay";
+import StarDisplay from "../../../../components/StarDisplay";
+import Comments from "../../../../components/Comments";
 
 interface Props {
   unit: Unit;
-}
-
-interface FormInput {
-  _id: string;
-  name: string;
-  email: string;
-  comment?: string;
 }
 
 const styles = {
@@ -96,26 +91,6 @@ const styles = {
 function Unit({ unit }: Props) {
   const { data: session } = useSession();
   const [submitted, setSubmitted] = useState(false);
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormInput>();
-
-  const onSubmit: SubmitHandler<FormInput> = async (data) => {
-    fetch("/api/createComment", {
-      method: "POST",
-      body: JSON.stringify(data),
-    })
-      .then(() => {
-        console.log(data);
-        setSubmitted(true);
-      })
-      .catch((err) => {
-        console.log(err);
-        setSubmitted(false);
-      });
-  };
 
   return (
     <main>
@@ -165,6 +140,18 @@ function Unit({ unit }: Props) {
             </span>
           </p>
         </div>
+        <div className="text-sm">
+          <FullStarDisplay
+            overall={unit.avgOverall}
+            ba={unit.avgBaseAmenities}
+            bl={unit.avgBaseLogistics}
+            ho={unit.avgHousingOptions}
+            lc={unit.avgLocalCommunity}
+            lr={unit.avgLocalRecreation}
+            sd={unit.avgSchoolDistrict}
+          />
+        </div>
+
         <h2 className="text-xl font-light text-gray-500 mb-2 mt-7">
           {unit.description}
         </h2>
@@ -179,19 +166,7 @@ function Unit({ unit }: Props) {
 
         <hr className={styles.lineStyle[unit.branch.name as keyof object]} />
 
-        {unit.comments.map((comment) => (
-          <div className="p-1 " key={comment._id}>
-            <CommentCard
-              baseAmenities={comment.baseAmenities}
-              baseLogistics={comment.baseLogistics}
-              housingOptions={comment.housingOptions}
-              localCommunity={comment.localCommunity}
-              localRecreation={comment.localRecreation}
-              schoolDistrict={comment.schoolDistrict}
-              comment={comment.comment}
-            />
-          </div>
-        ))}
+        <Comments unit={unit} />
       </div>
     </main>
   );
@@ -242,10 +217,64 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       unit._ref == ^._id &&
       approved == true
     ],
+    'avgBaseAmenities': round(math::avg(*[
+      _type == "comment" &&
+      unit._ref == ^._id &&
+      approved == true
+    ].baseAmenities),2),
+'avgBaseLogistics': round(math::avg(*[
+      _type == "comment" &&
+      unit._ref == ^._id &&
+      approved == true
+    ].baseLogistics),2),
+'avgHousingOptions': round(math::avg(*[
+      _type == "comment" &&
+      unit._ref == ^._id &&
+      approved == true
+    ].housingOptions),2),
+'avgLocalCommunity': round(math::avg(*[
+      _type == "comment" &&
+      unit._ref == ^._id &&
+      approved == true
+    ].localCommunity),2),
+'avgLocalRecreation': round(math::avg(*[
+      _type == "comment" &&
+      unit._ref == ^._id &&
+      approved == true
+    ].localRecreation),2),
+'avgSchoolDistrict': round(math::avg(*[
+      _type == "comment" &&
+      unit._ref == ^._id &&
+      approved == true
+    ].schoolDistrict),2),
+'avgOverall': round(math::avg(*[
+      _type == "comment" &&
+      unit._ref == ^._id &&
+      approved == true
+    ].baseAmenities + *[
+      _type == "comment" &&
+      unit._ref == ^._id &&
+      approved == true
+    ].baseLogistics + *[
+      _type == "comment" &&
+      unit._ref == ^._id &&
+      approved == true
+    ].housingOptions + *[
+      _type == "comment" &&
+      unit._ref == ^._id &&
+      approved == true
+    ].localCommunity + *[
+      _type == "comment" &&
+      unit._ref == ^._id &&
+      approved == true
+    ].localRecreation + *[
+      _type == "comment" &&
+      unit._ref == ^._id &&
+      approved == true
+    ].schoolDistrict),2),
     description,
     mainImage,
     slug,
-    body
   }`;
 
   const unit = await sanityClient.fetch(query, {

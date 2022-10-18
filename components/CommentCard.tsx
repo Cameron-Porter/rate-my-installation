@@ -1,7 +1,19 @@
 import React from "react";
 import StarDisplay from "./StarDisplay";
 
+interface Comment {
+  postedAt: string;
+  comment: string;
+  baseAmenities: number;
+  baseLogistics: number;
+  housingOptions: number;
+  localCommunity: number;
+  localRecreation: number;
+  schoolDistrict: number;
+}
+
 function CommentCard({
+  postedAt,
   baseAmenities,
   baseLogistics,
   housingOptions,
@@ -9,9 +21,14 @@ function CommentCard({
   localRecreation,
   schoolDistrict,
   comment,
-}) {
+}: Comment) {
+  const createdAt = new Date(postedAt).toLocaleDateString();
+
   return (
-    <div className="shadow p-10 w-2xl my-4 flex flex-col">
+    <div className="shadow px-10 pb-10 pt-2 w-2xl mb-4 flex flex-col">
+      <div className="flex justify-center underline text-sm mb-4">
+        {`Posted: ${createdAt}`}
+      </div>
       <div className="flex justify-around mb-6">
         <div className="space-y-5">
           <p className="">

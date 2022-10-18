@@ -3,7 +3,7 @@ import { GetStaticProps } from "next/types";
 import React from "react";
 import Footer from "../../../components/Footer";
 import Header from "../../../components/Header";
-import Stars from "../../../components/Stars";
+import StarDisplay from "../../../components/StarDisplay";
 import { sanityClient, urlFor } from "../../../sanity";
 import { Branch, Unit } from "../../../typings";
 
@@ -105,25 +105,31 @@ function Branch({ branch }: Props) {
                   <div className="flex-col">
                     <p className="font-bold text-lg">{unit.title}</p>
                     <p className="text-gray-500 text-xs">{branch.name}</p>
-                    <p className="flex space-x-2 font-italic text-md">
-                      <span
-                        className={
-                          styles.textColor[branch.name as keyof object]
-                        }
-                      >
-                        Rated:{" "}
-                      </span>
-                      <Stars
-                        h={20}
-                        w={20}
-                        initRating={5}
-                        onRatingChanged={(newRating: any) => {
-                          console.log(
-                            `NEW RATING (${newRating}) DETECTED FOR 2.. SAVING TO DB`
-                          );
-                        }}
-                      />
-                    </p>
+                    <div className="flex space-x-2 font-italic text-md">
+                      {unit.avgOverall ? (
+                        <div className="flex items-center space-x-2">
+                          <span
+                            className={
+                              styles.textColor[branch.name as keyof object]
+                            }
+                          >
+                            Rated:{" "}
+                          </span>
+                          <span>
+                            <StarDisplay
+                              h={20}
+                              w={20}
+                              initRating={unit.avgOverall}
+                            />
+                          </span>
+                          <span>({unit.avgOverall} / 5)</span>
+                        </div>
+                      ) : (
+                        <div className="text-sm text-gray-500">
+                          Not Yet Rated
+                        </div>
+                      )}
+                    </div>
                   </div>
                   <img
                     className="h-12 w-12 rounded-full"
@@ -186,7 +192,32 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       title,
       description,
       mainImage,
-      slug
+      slug,
+      'avgOverall': round(math::avg(*[
+        _type == "comment" &&
+        unit._ref == ^._id &&
+        approved == true
+      ].baseAmenities + *[
+        _type == "comment" &&
+        unit._ref == ^._id &&
+        approved == true
+      ].baseLogistics + *[
+        _type == "comment" &&
+        unit._ref == ^._id &&
+        approved == true
+      ].housingOptions + *[
+        _type == "comment" &&
+        unit._ref == ^._id &&
+        approved == true
+      ].localCommunity + *[
+        _type == "comment" &&
+        unit._ref == ^._id &&
+        approved == true
+      ].localRecreation + *[
+        _type == "comment" &&
+        unit._ref == ^._id &&
+        approved == true
+      ].schoolDistrict),2),
     } | order(title asc)
     }`;
 

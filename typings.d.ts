@@ -20,7 +20,13 @@ export interface Unit {
   slug: {
     current: string;
   };
-  body: [object];
+  avgBaseAmenities: number;
+  avgBaseLogistics: number;
+  avgHousingOptions: number;
+  avgLocalCommunity: number;
+  avgLocalRecreation: number;
+  avgSchoolDistrict: number;
+  avgOverall: number;
 }
 
 export interface Branch {

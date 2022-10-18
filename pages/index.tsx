@@ -5,7 +5,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { sanityClient, urlFor } from "../sanity";
 import { Unit, Branch } from "../typings";
-import Stars from "../components/Stars";
+import StarDisplay from "../components/StarDisplay";
 
 interface Props {
   topUnits: [Unit];
@@ -21,7 +21,7 @@ export default function Home({ topUnits, bottomUnits, branches }: Props) {
   return (
     <div className="">
       <Head>
-        <title>Rate My Installation</title>
+        <title>Rate Military Installation</title>
         <link rel="icon" href="../favicon.ico" />
         <meta
           name="description"
@@ -92,19 +92,25 @@ export default function Home({ topUnits, bottomUnits, branches }: Props) {
                   <div className="flex-col">
                     <p className="font-bold text-lg">{unit.title}</p>
                     <p className="text-gray-500 text-xs">{unit.branch.name}</p>
-                    <p className="flex space-x-2 font-italic text-md">
-                      <p>Rated: </p>
-                      <Stars
-                        h={20}
-                        w={20}
-                        initRating={5}
-                        onRatingChanged={(newRating: any) => {
-                          console.log(
-                            `NEW RATING (${newRating}) DETECTED FOR 2.. SAVING TO DB`
-                          );
-                        }}
-                      />
-                    </p>
+                    <div className="flex space-x-2 font-italic text-md">
+                      {unit.avgOverall ? (
+                        <div className="flex items-center space-x-2">
+                          <span className="">Rated: </span>
+                          <span>
+                            <StarDisplay
+                              h={20}
+                              w={20}
+                              initRating={unit.avgOverall}
+                            />
+                          </span>
+                          <span>({unit.avgOverall} / 5)</span>
+                        </div>
+                      ) : (
+                        <div className="text-sm text-gray-500">
+                          Not Yet Rated
+                        </div>
+                      )}
+                    </div>
                   </div>
                   <img
                     className="h-12 w-12 rounded-full"
@@ -143,19 +149,25 @@ export default function Home({ topUnits, bottomUnits, branches }: Props) {
                   <div className="flex-col">
                     <p className="font-bold text-lg">{unit.title}</p>
                     <p className="text-gray-500 text-xs">{unit.branch.name}</p>
-                    <p className="flex space-x-2 font-italic text-md">
-                      <p>Rated: </p>
-                      <Stars
-                        h={20}
-                        w={20}
-                        initRating={5}
-                        onRatingChanged={(newRating: any) => {
-                          console.log(
-                            `NEW RATING (${newRating}) DETECTED FOR 2.. SAVING TO DB`
-                          );
-                        }}
-                      />
-                    </p>
+                    <div className="flex space-x-2 font-italic text-md">
+                      {unit.avgOverall ? (
+                        <div className="flex items-center space-x-2">
+                          <span className="">Rated: </span>
+                          <span>
+                            <StarDisplay
+                              h={20}
+                              w={20}
+                              initRating={unit.avgOverall}
+                            />
+                          </span>
+                          <span>({unit.avgOverall} / 5)</span>
+                        </div>
+                      ) : (
+                        <div className="text-sm text-gray-500">
+                          Not Yet Rated
+                        </div>
+                      )}
+                    </div>
                   </div>
                   <img
                     className="h-12 w-12 rounded-full"
@@ -187,10 +199,35 @@ export const getStaticProps = async () => {
     },
     description,
     mainImage,
-    slug
-  } | order(title asc)`;
+    slug,
+    'avgOverall': round(math::avg(*[
+      _type == "comment" &&
+      unit._ref == ^._id &&
+      approved == true
+    ].baseAmenities + *[
+      _type == "comment" &&
+      unit._ref == ^._id &&
+      approved == true
+    ].baseLogistics + *[
+      _type == "comment" &&
+      unit._ref == ^._id &&
+      approved == true
+    ].housingOptions + *[
+      _type == "comment" &&
+      unit._ref == ^._id &&
+      approved == true
+    ].localCommunity + *[
+      _type == "comment" &&
+      unit._ref == ^._id &&
+      approved == true
+    ].localRecreation + *[
+      _type == "comment" &&
+      unit._ref == ^._id &&
+      approved == true
+    ].schoolDistrict),2),
+  } | order(avgOverall asc)`;
 
-  const queryBottomUnits = `*[_type == "unit"][11...21]{
+  const queryBottomUnits = `*[_type == "unit"][1...10]{
     _id,
     title,
     branch-> {
@@ -200,8 +237,33 @@ export const getStaticProps = async () => {
     },
     description,
     mainImage,
-    slug
-  } | order(title desc)`;
+    slug,
+    'avgOverall': round(math::avg(*[
+      _type == "comment" &&
+      unit._ref == ^._id &&
+      approved == true
+    ].baseAmenities + *[
+      _type == "comment" &&
+      unit._ref == ^._id &&
+      approved == true
+    ].baseLogistics + *[
+      _type == "comment" &&
+      unit._ref == ^._id &&
+      approved == true
+    ].housingOptions + *[
+      _type == "comment" &&
+      unit._ref == ^._id &&
+      approved == true
+    ].localCommunity + *[
+      _type == "comment" &&
+      unit._ref == ^._id &&
+      approved == true
+    ].localRecreation + *[
+      _type == "comment" &&
+      unit._ref == ^._id &&
+      approved == true
+    ].schoolDistrict),2),
+  } | order(avgOverall desc)`;
 
   const queryBranches = `*[_type == "branch"]{
     _id,

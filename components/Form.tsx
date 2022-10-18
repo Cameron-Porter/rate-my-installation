@@ -80,12 +80,12 @@ const styles = {
 
 interface FormInput {
   _id: string;
-  baseAmenities: string;
-  baseLogistics: string;
-  housingOptions: string;
-  localCommunity: string;
-  localRecreation: string;
-  schoolDistrict: string;
+  baseAmenities: number;
+  baseLogistics: number;
+  housingOptions: number;
+  localCommunity: number;
+  localRecreation: number;
+  schoolDistrict: number;
   comment?: string;
 }
 
@@ -102,23 +102,21 @@ function Form({ unit }: Props) {
     formState: { errors },
   } = useForm<FormInput>();
   const onSubmit: SubmitHandler<FormInput> = async (data) => {
-    data.baseAmenities === null
-      ? (data.baseAmenities = "5")
-      : data.baseAmenities,
+    data.baseAmenities === null ? (data.baseAmenities = 5) : data.baseAmenities,
       data.baseLogistics === null
-        ? (data.baseLogistics = "5")
+        ? (data.baseLogistics = 5)
         : data.baseLogistics,
       data.housingOptions === null
-        ? (data.housingOptions = "5")
+        ? (data.housingOptions = 5)
         : data.housingOptions,
       data.localCommunity === null
-        ? (data.localCommunity = "5")
+        ? (data.localCommunity = 5)
         : data.localCommunity,
       data.localRecreation === null
-        ? (data.localRecreation = "5")
+        ? (data.localRecreation = 5)
         : data.localRecreation,
       data.schoolDistrict === null
-        ? (data.schoolDistrict = "5")
+        ? (data.schoolDistrict = 5)
         : data.schoolDistrict,
       fetch("/api/createComment", {
         method: "POST",
@@ -142,7 +140,7 @@ function Form({ unit }: Props) {
 
   return (
     <div>
-      {!session ? (
+      {session ? (
         submitted ? (
           <div className="flex flex-col p-10 my-10 bg-blue-500 text-white max-w-2xl mx-auto">
             <h3 className="text-3xl font-bold">Thank you for your Rating!</h3>
@@ -183,7 +181,7 @@ function Form({ unit }: Props) {
                   <Stars
                     h={30}
                     w={30}
-                    initRating="5"
+                    initRating={5}
                     onRatingChanged={(newRating: number) => {
                       console.log(
                         `NEW RATING (${newRating}) DETECTED FOR 2.. SAVING TO DB`
@@ -204,7 +202,7 @@ function Form({ unit }: Props) {
                   <Stars
                     h={30}
                     w={30}
-                    initRating="5"
+                    initRating={5}
                     onRatingChanged={(rating: number) => {
                       setBaseLogisticsRating(rating);
                     }}
@@ -222,7 +220,7 @@ function Form({ unit }: Props) {
                   <Stars
                     h={30}
                     w={30}
-                    initRating="5"
+                    initRating={5}
                     onRatingChanged={(rating: number) => {
                       setHousingOptionsRating(rating);
                     }}
@@ -242,7 +240,7 @@ function Form({ unit }: Props) {
                   <Stars
                     h={30}
                     w={30}
-                    initRating="5"
+                    initRating={5}
                     onRatingChanged={(rating: number) => {
                       setLocalCommunityRating(rating);
                     }}
@@ -260,7 +258,7 @@ function Form({ unit }: Props) {
                   <Stars
                     h={30}
                     w={30}
-                    initRating="5"
+                    initRating={5}
                     onRatingChanged={(rating: number) => {
                       setLocalRecreationRating(rating);
                     }}
@@ -278,7 +276,7 @@ function Form({ unit }: Props) {
                   <Stars
                     h={30}
                     w={30}
-                    initRating="5"
+                    initRating={5}
                     onRatingChanged={(rating: number) => {
                       setSchoolDistrictRating(rating);
                     }}
