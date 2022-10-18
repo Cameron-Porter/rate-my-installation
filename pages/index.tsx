@@ -27,12 +27,12 @@ export default function Home({ topUnits, bottomUnits, branches }: Props) {
           name="description"
           content={`A place for servicemen and women to share and view reviews of their branch's installations.`}
         />
-        <meta property="og:title" content={`Rate My Unit`} />
+        <meta property="og:title" content={`Rate My Installation`} />
         <meta
           property="og:description"
           content={`A place for servicemen and women to share and view reviews of their branch's installations.`}
         />
-        <meta property="og:url" content={`https://rate-my-unit.vercel.app`} />
+        <meta property="og:url" content={`https://ratemyinstallation.com`} />
         <meta property="og:type" content="website" />
         <meta
           property="og:image"
