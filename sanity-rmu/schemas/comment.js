@@ -4,8 +4,10 @@ export default {
   title: "Comment",
   fields: [
     {
-      name: "name",
-      type: "string",
+      name: "unit",
+      title: "Unit",
+      type: "reference",
+      to: { type: "unit" },
     },
     {
       title: "Approved",
@@ -14,17 +16,57 @@ export default {
       description: "Comments won't show on site without approval",
     },
     {
-      name: "email",
-      type: "string",
+      name: "baseAmenities",
+      title: "Base Amenities",
+      type: "number",
+      validation: (Rule) => Rule.max(5),
+    },
+    {
+      name: "baseLogistics",
+      type: "Base Logistics",
+      type: "number",
+      validation: (Rule) => Rule.max(5),
+    },
+    {
+      name: "housingOptions",
+      type: "Housing Options",
+      type: "number",
+      validation: (Rule) => Rule.max(5),
+    },
+    {
+      name: "localCommunity",
+      type: "Local Community",
+      type: "number",
+      validation: (Rule) => Rule.max(5),
+    },
+    {
+      name: "localRecreation",
+      type: "Local Recreation",
+      type: "number",
+      validation: (Rule) => Rule.max(5),
+    },
+    {
+      name: "schoolDistrict",
+      type: "School District",
+      type: "number",
+      validation: (Rule) => Rule.max(5),
     },
     {
       name: "comment",
+      title: "Comment",
       type: "text",
     },
-    {
-      name: "unit",
-      type: "reference",
-      to: [{ type: "unit" }],
-    },
   ],
+  preview: {
+    select: {
+      title: "comment",
+      unit: "unit.name",
+    },
+    prepare(selection) {
+      const { unit } = selection;
+      return Object.assign({}, selection, {
+        subtitle: unit && `by ${unit}`,
+      });
+    },
+  },
 };

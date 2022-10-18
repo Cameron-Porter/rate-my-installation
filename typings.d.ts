@@ -20,7 +20,13 @@ export interface Unit {
   slug: {
     current: string;
   };
-  body: [object];
+  avgBaseAmenities: number;
+  avgBaseLogistics: number;
+  avgHousingOptions: number;
+  avgLocalCommunity: number;
+  avgLocalRecreation: number;
+  avgSchoolDistrict: number;
+  avgOverall: number;
 }
 
 export interface Branch {
@@ -46,8 +52,12 @@ export interface Branch {
 export interface Comment {
   approved: boolean;
   comment: string;
-  email: string;
-  name: string;
+  baseAmenities: number;
+  baseLogistics: number;
+  housingOptions: number;
+  localCommunity: number;
+  localRecreation: number;
+  schoolDistrict: number;
   unit: {
     _ref: string;
     _type: string;

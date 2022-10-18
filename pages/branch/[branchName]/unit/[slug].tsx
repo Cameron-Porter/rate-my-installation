@@ -3,18 +3,15 @@ import React, { useState } from "react";
 import Header from "../../../../components/Header";
 import { sanityClient, urlFor } from "../../../../sanity";
 import { Unit } from "../../../../typings";
-import { useForm, SubmitHandler } from "react-hook-form";
 import { useSession } from "next-auth/react";
+import Form from "../../../../components/Form";
+import CommentCard from "../../../../components/CommentCard";
+import FullStarDisplay from "../../../../components/FullStarDisplay";
+import StarDisplay from "../../../../components/StarDisplay";
+import Comments from "../../../../components/Comments";
 
 interface Props {
   unit: Unit;
-}
-
-interface FormInput {
-  _id: string;
-  name: string;
-  email: string;
-  comment?: string;
 }
 
 const styles = {
@@ -94,26 +91,6 @@ const styles = {
 function Unit({ unit }: Props) {
   const { data: session } = useSession();
   const [submitted, setSubmitted] = useState(false);
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormInput>();
-
-  const onSubmit: SubmitHandler<FormInput> = async (data) => {
-    fetch("/api/createComment", {
-      method: "POST",
-      body: JSON.stringify(data),
-    })
-      .then(() => {
-        console.log(data);
-        setSubmitted(true);
-      })
-      .catch((err) => {
-        console.log(err);
-        setSubmitted(false);
-      });
-  };
 
   return (
     <main>
@@ -163,98 +140,25 @@ function Unit({ unit }: Props) {
             </span>
           </p>
         </div>
+        <div className="text-sm">
+          <FullStarDisplay
+            overall={unit.avgOverall}
+            ba={unit.avgBaseAmenities}
+            bl={unit.avgBaseLogistics}
+            ho={unit.avgHousingOptions}
+            lc={unit.avgLocalCommunity}
+            lr={unit.avgLocalRecreation}
+            sd={unit.avgSchoolDistrict}
+          />
+        </div>
+
         <h2 className="text-xl font-light text-gray-500 mb-2 mt-7">
           {unit.description}
         </h2>
       </article>
       <hr className={styles.lineStyle[unit.branch.name as keyof object]} />
 
-      {session ? (
-        submitted ? (
-          <div className="flex flex-col p-10 my-10 bg-blue-500 text-white max-w-2xl mx-auto">
-            <h3 className="text-3xl font-bold">Thank you for your Rating!</h3>
-            <p>Once your Rating has been approved, it will appear below.</p>
-          </div>
-        ) : (
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            className="flex flex-col p-5 max-w-2xl mx-auto mb-10"
-          >
-            <h3 className="text-sm">
-              <span
-                className={styles.textColor[unit.branch.name as keyof object]}
-              >
-                Been stationed here?
-              </span>
-            </h3>
-            <h4 className="text-3xl font-bold">Leave a Rating below!</h4>
-            <hr className="py-3 mt-2" />
-
-            <input
-              {...register("_id")}
-              type="hidden"
-              name="_id"
-              value={unit._id}
-            />
-            <label className={styles.form.label}>
-              <span className={styles.form.span}>Name</span>
-              <input
-                {...register("name", { required: true })}
-                className={styles.form.inputs[unit.branch.name as keyof object]}
-                placeholder="Your Name Here"
-                type="text"
-              />
-            </label>
-            <label className={styles.form.label}>
-              <span className={styles.form.span}>Email</span>
-              <input
-                {...register("email", { required: true })}
-                className={styles.form.inputs[unit.branch.name as keyof object]}
-                placeholder="Your Email Here"
-                type="email"
-              />
-            </label>
-            <label className={styles.form.label}>
-              <span className={styles.form.span}>Comment</span>
-              <textarea
-                {...register("comment")}
-                className={
-                  styles.form.textarea[unit.branch.name as keyof object]
-                }
-                placeholder="Your Comment Here"
-                rows={8}
-              />
-            </label>
-            <div className="flex flex-col p-5">
-              {errors.name && (
-                <span className="text-red-500">
-                  - The Name Field is required
-                </span>
-              )}
-              {errors.email && (
-                <span className="text-red-500">
-                  - The Email Field is required
-                </span>
-              )}
-            </div>
-            <input
-              type="submit"
-              className={styles.form.submit[unit.branch.name as keyof object]}
-            />
-          </form>
-        )
-      ) : (
-        <div className="flex flex-col p-10 my-10 bg-blue-500 text-white max-w-2xl mx-auto">
-          <h3 className="text-3xl font-bold">
-            Please Sign In to Leave a Rating
-          </h3>
-          <p>
-            Signing in with ID.me and your dot MIL email will earn you a
-            Verified badge on all your comments. This adds to your creditability
-            as a reviewer.
-          </p>
-        </div>
-      )}
+      <Form unit={unit} />
 
       {/* Comments */}
       <div className="p-10 max-w-3xl mx-auto space-y-2">
@@ -262,18 +166,7 @@ function Unit({ unit }: Props) {
 
         <hr className={styles.lineStyle[unit.branch.name as keyof object]} />
 
-        {unit.comments.map((comment) => (
-          <div className="p-1" key={comment._id}>
-            <p className="shadow p-10 w-2xl my-4">
-              <span
-                className={styles.textColor[unit.branch.name as keyof object]}
-              >
-                {comment.name}:{" "}
-              </span>
-              {comment.comment}
-            </p>
-          </div>
-        ))}
+        <Comments unit={unit} />
       </div>
     </main>
   );
@@ -324,10 +217,64 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       unit._ref == ^._id &&
       approved == true
     ],
+    'avgBaseAmenities': round(math::avg(*[
+      _type == "comment" &&
+      unit._ref == ^._id &&
+      approved == true
+    ].baseAmenities),2),
+'avgBaseLogistics': round(math::avg(*[
+      _type == "comment" &&
+      unit._ref == ^._id &&
+      approved == true
+    ].baseLogistics),2),
+'avgHousingOptions': round(math::avg(*[
+      _type == "comment" &&
+      unit._ref == ^._id &&
+      approved == true
+    ].housingOptions),2),
+'avgLocalCommunity': round(math::avg(*[
+      _type == "comment" &&
+      unit._ref == ^._id &&
+      approved == true
+    ].localCommunity),2),
+'avgLocalRecreation': round(math::avg(*[
+      _type == "comment" &&
+      unit._ref == ^._id &&
+      approved == true
+    ].localRecreation),2),
+'avgSchoolDistrict': round(math::avg(*[
+      _type == "comment" &&
+      unit._ref == ^._id &&
+      approved == true
+    ].schoolDistrict),2),
+'avgOverall': round(math::avg(*[
+      _type == "comment" &&
+      unit._ref == ^._id &&
+      approved == true
+    ].baseAmenities + *[
+      _type == "comment" &&
+      unit._ref == ^._id &&
+      approved == true
+    ].baseLogistics + *[
+      _type == "comment" &&
+      unit._ref == ^._id &&
+      approved == true
+    ].housingOptions + *[
+      _type == "comment" &&
+      unit._ref == ^._id &&
+      approved == true
+    ].localCommunity + *[
+      _type == "comment" &&
+      unit._ref == ^._id &&
+      approved == true
+    ].localRecreation + *[
+      _type == "comment" &&
+      unit._ref == ^._id &&
+      approved == true
+    ].schoolDistrict),2),
     description,
     mainImage,
     slug,
-    body
   }`;
 
   const unit = await sanityClient.fetch(query, {

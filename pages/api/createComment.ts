@@ -15,7 +15,16 @@ export default async function createComment(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { _id, name, email, comment } = JSON.parse(req.body);
+  const {
+    _id,
+    baseAmenities,
+    baseLogistics,
+    housingOptions,
+    localCommunity,
+    localRecreation,
+    schoolDistrict,
+    comment,
+  } = JSON.parse(req.body);
 
   try {
     await client.create({
@@ -24,8 +33,12 @@ export default async function createComment(
         _type: "reference",
         _ref: _id,
       },
-      name,
-      email,
+      baseAmenities,
+      baseLogistics,
+      housingOptions,
+      localCommunity,
+      localRecreation,
+      schoolDistrict,
       comment,
     });
   } catch (err) {
