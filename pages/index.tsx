@@ -229,7 +229,7 @@ export const getStaticProps = async () => {
     ].schoolDistrict),2),
   } | order(avgOverall asc)`;
 
-  const queryBottomUnits = `*[_type == "unit"][1...10]{
+  const queryBottomUnits = `*[_type == "unit"][0...10]{
     _id,
     title,
     branch-> {
