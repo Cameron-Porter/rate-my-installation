@@ -310,13 +310,10 @@ function Form({ unit }: Props) {
         )
       ) : (
         <div className="flex flex-col p-10 my-10 bg-blue-500 text-white max-w-2xl mx-auto">
-          <h3 className="text-3xl font-bold">
+          <h3 className="text-3xl text-center font-bold">
             Please Sign In to Leave a Rating
           </h3>
           <p>
-            Signing in with ID.me and your dot MIL email will earn you a
-            Verified badge on all your comments. This adds to your creditability
-            as a reviewer.
           </p>
         </div>
       )}
