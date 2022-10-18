@@ -42,6 +42,11 @@ export default function Home({ topUnits, bottomUnits, branches }: Props) {
           property="og:image:alt"
           content="Lighthouse in the middle of the sea"
         />
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2802002003003896"
+          crossOrigin="anonymous"
+        ></script>
       </Head>
       <Header />
       <Banner />

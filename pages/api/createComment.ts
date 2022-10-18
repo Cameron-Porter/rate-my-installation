@@ -17,6 +17,7 @@ export default async function createComment(
 ) {
   const {
     _id,
+    email,
     baseAmenities,
     baseLogistics,
     housingOptions,
@@ -33,6 +34,7 @@ export default async function createComment(
         _type: "reference",
         _ref: _id,
       },
+      email,
       baseAmenities,
       baseLogistics,
       housingOptions,

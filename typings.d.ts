@@ -52,6 +52,7 @@ export interface Branch {
 export interface Comment {
   approved: boolean;
   comment: string;
+  email: string;
   baseAmenities: number;
   baseLogistics: number;
   housingOptions: number;

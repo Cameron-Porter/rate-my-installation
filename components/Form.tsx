@@ -80,6 +80,7 @@ const styles = {
 
 interface FormInput {
   _id: string;
+  email: string;
   baseAmenities: number;
   baseLogistics: number;
   housingOptions: number;
@@ -166,6 +167,12 @@ function Form({ unit }: Props) {
               type="hidden"
               name="_id"
               value={unit._id}
+            />
+            <input
+              {...register("email")}
+              type="hidden"
+              name="email"
+              value={session.user!.email!}
             />
             <div className="flex justify-around align-center mb-8">
               <div className="space-y-8">
