@@ -24,12 +24,12 @@ function Header() {
           />
         </Link>
         <div className="flex sm:space-x-10">
-          <Link href="/about">
+          <Link href={`/about`}>
             <span className="group transition-all duration-300 ease-in-out">
               <h3 className={styles.navLinks}>About</h3>
             </span>
           </Link>
-          <Link href="/contact">
+          <Link href={`/contact`}>
             <span className="group transition-all duration-300 ease-in-out">
               <h3 className={styles.navLinks}>Contact</h3>
             </span>
