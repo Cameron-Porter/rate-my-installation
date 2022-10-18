@@ -191,7 +191,7 @@ export default function Home({ topUnits, bottomUnits, branches }: Props) {
 }
 
 export const getStaticProps = async () => {
-  const queryTopUnits = `*[_type == "unit"][0...10]{
+  const queryTopUnits = `*[_type == "unit"]{
     _id,
     title,
     branch-> {
@@ -227,9 +227,9 @@ export const getStaticProps = async () => {
       unit._ref == ^._id &&
       approved == true
     ].schoolDistrict),2),
-  } | order(avgOverall asc)`;
+  } | order(avgOverall asc, title asc)[0...10]`;
 
-  const queryBottomUnits = `*[_type == "unit"][0...10]{
+  const queryBottomUnits = `*[_type == "unit"]{
     _id,
     title,
     branch-> {
@@ -265,7 +265,7 @@ export const getStaticProps = async () => {
       unit._ref == ^._id &&
       approved == true
     ].schoolDistrict),2),
-  } | order(avgOverall desc)`;
+  } | order(avgOverall desc, title asc)[0...10]`;
 
   const queryBranches = `*[_type == "branch"]{
     _id,
