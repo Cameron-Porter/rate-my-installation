@@ -25,7 +25,21 @@ export default async function createComment(
     localRecreation,
     schoolDistrict,
     comment,
-  } = JSON.parse(req.body);
+  } = JSON.parse(req.body, function (key, value) {
+    if (
+      key in
+      [
+        "baseAmenities",
+        "baseLogistics",
+        "housingOptions",
+        "localCommunity",
+        "localRecreation",
+        "schoolDistrict",
+      ]
+    ) {
+      return Number(value);
+    }
+  });
 
   try {
     await client.create({

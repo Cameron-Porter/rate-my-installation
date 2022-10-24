@@ -5,9 +5,7 @@ import { sanityClient, urlFor } from "../../../../sanity";
 import { Unit } from "../../../../typings";
 import { useSession } from "next-auth/react";
 import Form from "../../../../components/Form";
-import CommentCard from "../../../../components/CommentCard";
 import FullStarDisplay from "../../../../components/FullStarDisplay";
-import StarDisplay from "../../../../components/StarDisplay";
 import Comments from "../../../../components/Comments";
 
 interface Props {
@@ -89,9 +87,6 @@ const styles = {
 };
 
 function Unit({ unit }: Props) {
-  const { data: session } = useSession();
-  const [submitted, setSubmitted] = useState(false);
-
   return (
     <main>
       <head>

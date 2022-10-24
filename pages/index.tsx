@@ -227,7 +227,7 @@ export const getStaticProps = async () => {
       unit._ref == ^._id &&
       approved == true
     ].schoolDistrict),2),
-  } | order(avgOverall asc, title asc)[0...10]`;
+  } | order(avgOverall asc)[0...10]`;
 
   const queryBottomUnits = `*[_type == "unit"]{
     _id,
