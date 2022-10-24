@@ -113,7 +113,7 @@ function Unit({ unit }: Props) {
       </head>
       <Header />
       <img
-        className="w-full h-40 object-cover"
+        className="w-full h-[20rem] object-cover"
         src={urlFor(unit.mainImage).url()}
         alt=""
       />
