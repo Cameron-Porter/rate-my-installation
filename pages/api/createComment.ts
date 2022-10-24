@@ -26,18 +26,20 @@ export default async function createComment(
     schoolDistrict,
     comment,
   } = JSON.parse(req.body, function (key, value) {
-    if (
-      key in
-      [
-        "baseAmenities",
-        "baseLogistics",
-        "housingOptions",
-        "localCommunity",
-        "localRecreation",
-        "schoolDistrict",
-      ]
-    ) {
-      return Number(value);
+    for (key of req.body) {
+      if (
+        key in
+        [
+          "baseAmenities",
+          "baseLogistics",
+          "housingOptions",
+          "localCommunity",
+          "localRecreation",
+          "schoolDistrict",
+        ]
+      ) {
+        return Number(value);
+      }
     }
   });
 
