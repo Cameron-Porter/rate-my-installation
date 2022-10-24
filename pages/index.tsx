@@ -38,7 +38,10 @@ export default function Home({ topUnits, bottomUnits, branches }: Props) {
           property="og:image"
           content={`https://cdn.sanity.io/images/07k2mc8t/production/d1f10bb9502e1153c5d48b9b47adb09edacf8981-2048x1367.jpg`}
         />
-        <meta property="og:image:alt" content="Rows of Helicopters" />
+        <meta
+          property="og:image:alt"
+          content="Rows of planes lead by a helicopter."
+        />
         <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2802002003003896"

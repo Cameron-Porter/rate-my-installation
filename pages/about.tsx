@@ -28,7 +28,10 @@ function about() {
           property="og:image"
           content={`https://cdn.sanity.io/images/07k2mc8t/production/d1f10bb9502e1153c5d48b9b47adb09edacf8981-2048x1367.jpg`}
         />
-        <meta property="og:image:alt" content="Rows of Helicopters" />
+        <meta
+          property="og:image:alt"
+          content="Rows of planes lead by a helicopter."
+        />
       </Head>
       <Header />
       <div className="justify-between items-center bg-[url('https://cdn.sanity.io/images/07k2mc8t/production/d1f10bb9502e1153c5d48b9b47adb09edacf8981-2048x1367.jpg')]  bg-cover bg-center lg:py-0 saturate-150">
