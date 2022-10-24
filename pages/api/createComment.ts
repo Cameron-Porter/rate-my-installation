@@ -38,7 +38,7 @@ export default async function createComment(
           "schoolDistrict",
         ]
       ) {
-        return Number(value);
+        value = Number(value);
       }
     }
   });
