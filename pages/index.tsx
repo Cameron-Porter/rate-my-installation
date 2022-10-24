@@ -21,18 +21,18 @@ export default function Home({ topUnits, bottomUnits, branches }: Props) {
   return (
     <div className="">
       <Head>
-        <title>Rate Military Installation</title>
+        <title>Rate My Installation</title>
         <link rel="icon" href="../favicon.ico" />
         <meta
           name="description"
           content={`A place for servicemen and women to share and view reviews of their branch's installations.`}
         />
-        <meta property="og:title" content={`Rate My Unit`} />
+        <meta property="og:title" content={`Rate My Installation`} />
         <meta
           property="og:description"
           content={`A place for servicemen and women to share and view reviews of their branch's installations.`}
         />
-        <meta property="og:url" content={`https://rate-my-unit.vercel.app`} />
+        <meta property="og:url" content={`https://ratemyinstallation.com`} />
         <meta property="og:type" content="website" />
         <meta
           property="og:image"
