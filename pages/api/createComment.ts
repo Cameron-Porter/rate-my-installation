@@ -38,7 +38,7 @@ export default async function createComment(
           "schoolDistrict",
         ]
       ) {
-        value = Number(value);
+        value = Number.parseInt(value);
       }
     }
   });
