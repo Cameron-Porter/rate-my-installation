@@ -5,13 +5,14 @@ export interface Unit {
   title: string;
   branch: {
     name: string;
-    logo: string;
+    logoImg: string;
     slug: {
       current: string;
     };
   };
   comments: Comment[];
   description: string;
+  image: string;
   mainImage: {
     asset: {
       url: string;
@@ -42,6 +43,8 @@ export interface Branch {
       url: string;
     };
   };
+  image: string;
+  logoImg: string;
   slug: {
     current: string;
   };

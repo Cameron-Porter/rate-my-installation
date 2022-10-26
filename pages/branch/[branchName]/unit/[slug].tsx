@@ -109,20 +109,16 @@ function Unit({ unit }: Props) {
           content={`https://rate-my-unit.vercel.app/branch/${unit.branch.slug.current}/unit/${unit.slug.current}`}
         />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content={urlFor(unit.mainImage).url()!} />
+        <meta property="og:image" content={unit.image!} />
       </head>
       <Header />
-      <img
-        className="w-full h-[20rem] object-cover"
-        src={urlFor(unit.mainImage).url()}
-        alt=""
-      />
+      <img className="w-full h-[20rem] object-cover" src={unit.image} alt="" />
       <article className="max-w-3xl mx-auto p-5">
         <div className="flex items-center mb-1 mt-8 justify-between">
           <div className="space-x-2 flex">
             <img
               className="h-10 w-10 rounded-full"
-              src={urlFor(unit.branch.logo).url()!}
+              src={unit.branch.logoImg!}
               alt=""
             />
             <h1 className="text-3xl flex items-end">{unit.title}</h1>
@@ -204,7 +200,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     title,
     branch-> {
       name,
-      logo,
+      logoImg,
       slug
     },
     'comments': *[
@@ -268,7 +264,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       approved == true
     ].schoolDistrict),2),
     description,
-    mainImage,
+    image,
     slug,
   }`;
 
