@@ -63,7 +63,7 @@ export default function Home({ topUnits, bottomUnits, branches }: Props) {
             <div className="cursor-pointer group overflow-hidden text-center m-3 w-[9rem]">
               <img
                 className="h-[9rem] w-auto mx-auto grayscale object-conatin group-hover:scale-105 transition-transform duration-300 ease-in-out group-hover:grayscale-0"
-                src={urlFor(branch.logo).url()!}
+                src={branch.logoImg!}
                 alt=""
               />
               <div>
@@ -89,7 +89,7 @@ export default function Home({ topUnits, bottomUnits, branches }: Props) {
             <div className="w-full mx-[1.5rem] sm:w-[19rem] md:sm:w-[22rem] justify-between sm:mx-[.5rem] border rounded-lg group cursor-pointer overflow-hidden m-3 shadow">
               <img
                 className="h-60 w-full object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out"
-                src={urlFor(unit.mainImage).url()!}
+                src={unit.image!}
                 alt=""
               />
               <div className="flex flex-col justify-between py-5 px-2 bg-white">
@@ -119,7 +119,7 @@ export default function Home({ topUnits, bottomUnits, branches }: Props) {
                   </div>
                   <img
                     className="h-12 w-12 rounded-full"
-                    src={urlFor(unit.branch.logo).url()!}
+                    src={unit.branch.logoImg!}
                     alt=""
                   />
                 </div>
@@ -146,7 +146,7 @@ export default function Home({ topUnits, bottomUnits, branches }: Props) {
             <div className="w-full mx-[1.5rem] sm:w-[19rem] md:sm:w-[22rem] justify-between sm:mx-[.5rem] border rounded-lg group cursor-pointer overflow-hidden m-3 shadow">
               <img
                 className="h-60 w-full object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out"
-                src={urlFor(unit.mainImage).url()!}
+                src={unit.image!}
                 alt=""
               />
               <div className="flex flex-col justify-between py-5 px-2 bg-white">
@@ -176,7 +176,7 @@ export default function Home({ topUnits, bottomUnits, branches }: Props) {
                   </div>
                   <img
                     className="h-12 w-12 rounded-full"
-                    src={urlFor(unit.branch.logo).url()!}
+                    src={unit.branch.logoImg!}
                     alt=""
                   />
                 </div>
@@ -199,11 +199,11 @@ export const getStaticProps = async () => {
     title,
     branch-> {
       name,
-      logo,
+      logoImg,
       slug
     },
     description,
-    mainImage,
+    image,
     slug,
     'avgOverall': round(math::avg(*[
       _type == "comment" &&
@@ -237,11 +237,11 @@ export const getStaticProps = async () => {
     title,
     branch-> {
       name,
-      logo,
+      logoImg,
       slug
     },
     description,
-    mainImage,
+    image,
     slug,
     'avgOverall': round(math::avg(*[
       _type == "comment" &&
@@ -273,7 +273,7 @@ export const getStaticProps = async () => {
   const queryBranches = `*[_type == "branch"]{
     _id,
     name,
-    logo,
+    logoImg,
     slug
   } | order(name asc)`;
 

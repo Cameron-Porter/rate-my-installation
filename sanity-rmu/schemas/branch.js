@@ -34,6 +34,16 @@ export default {
       },
     },
     {
+      name: "logoImg",
+      title: "Cloudinary Logo URL",
+      type: "string",
+    },
+    {
+      name: "image",
+      title: "Cloudinary Image URL",
+      type: "string",
+    },
+    {
       name: "description",
       title: "Description",
       type: "string",

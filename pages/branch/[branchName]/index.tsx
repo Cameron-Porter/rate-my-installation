@@ -60,19 +60,19 @@ function Branch({ branch }: Props) {
           content={`https://rate-my-unit.vercel.app/branch/${branch.slug.current}`}
         />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content={urlFor(branch.mainImage).url()!} />
+        <meta property="og:image" content={branch.image!} />
       </head>
       <Header />
       <img
         className="w-full h-[30rem] object-cover overflow-hidden"
-        src={urlFor(branch.mainImage).url()!}
+        src={branch.image!}
         alt=""
       />
       <article className="max-w-3xl mx-auto p-5">
         <div className="flex items-center mb-1 mt-8 justify-center space-x-2">
           <img
             className="h-10 w-10 rounded-full"
-            src={urlFor(branch.logo).url()!}
+            src={branch.logoImg!}
             alt=""
           />
           <h1 className="text-3xl flex items-end">{branch.name}</h1>
@@ -97,7 +97,7 @@ function Branch({ branch }: Props) {
             <div className="w-full mx-[1.5rem] sm:w-[19rem] md:sm:w-[22rem] justify-between sm:mx-[.5rem] border rounded-lg group cursor-pointer overflow-hidden m-3 shadow">
               <img
                 className="h-60 w-full object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out"
-                src={urlFor(unit.mainImage).url()!}
+                src={unit.image!}
                 alt=""
               />
               <div className="flex flex-col justify-between py-5 px-2 bg-white">
@@ -133,7 +133,7 @@ function Branch({ branch }: Props) {
                   </div>
                   <img
                     className="h-12 w-12 rounded-full"
-                    src={urlFor(branch.logo).url()!}
+                    src={branch.logoImg!}
                     alt=""
                   />
                 </div>
@@ -183,15 +183,15 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const query = `*[ _type == "branch" && slug.current == $branchName][0]{
     _id,
     name,
-    logo,
-    mainImage,
+    logoImg,
+    image,
     slug,
     description,
     "units": *[ _type == "unit" && references(^._id) ]{
       _id,
       title,
       description,
-      mainImage,
+      image,
       slug,
       'avgOverall': round(math::avg(*[
         _type == "comment" &&

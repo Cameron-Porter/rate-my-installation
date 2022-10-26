@@ -6,7 +6,6 @@ import schemaTypes from "all:part:@sanity/base/schema-type";
 
 // We import object and document schemas
 import blockContent from "./blockContent";
-import category from "./category";
 import unit from "./unit";
 import branch from "./branch";
 import comment from "./comment";
@@ -22,7 +21,6 @@ export default createSchema({
     // in the studio.
     unit,
     branch,
-    category,
     comment,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas

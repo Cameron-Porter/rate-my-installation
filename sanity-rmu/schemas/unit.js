@@ -15,6 +15,11 @@ export default {
       type: "string",
     },
     {
+      name: "image",
+      title: "Cloudinary Image URL",
+      type: "string",
+    },
+    {
       name: "slug",
       title: "Slug",
       type: "slug",
@@ -36,12 +41,6 @@ export default {
       options: {
         hotspot: true,
       },
-    },
-    {
-      name: "categories",
-      title: "Categories",
-      type: "array",
-      of: [{ type: "reference", to: { type: "category" } }],
     },
   ],
 

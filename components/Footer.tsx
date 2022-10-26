@@ -13,7 +13,9 @@ function Footer() {
       <div>
         <Image
           className="object-contain"
-          src={rmi}
+          src={
+            "https://res.cloudinary.com/dz58encu1/image/upload/v1666793469/white_logo_cp06nb.png"
+          }
           alt=""
           width="70"
           height="70"
