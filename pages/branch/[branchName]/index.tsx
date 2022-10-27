@@ -1,10 +1,11 @@
+import Image from "next/image";
 import Link from "next/link";
 import { GetStaticProps } from "next/types";
 import React from "react";
 import Footer from "../../../components/Footer";
 import Header from "../../../components/Header";
 import StarDisplay from "../../../components/StarDisplay";
-import { sanityClient, urlFor } from "../../../sanity";
+import { sanityClient } from "../../../sanity";
 import { Branch, Unit } from "../../../typings";
 
 interface Props {
@@ -63,17 +64,21 @@ function Branch({ branch }: Props) {
         <meta property="og:image" content={branch.image!} />
       </head>
       <Header />
-      <img
+      <Image
         className="w-full h-[30rem] object-cover overflow-hidden"
         src={branch.image!}
         alt=""
+        height={300}
+        width={1450}
       />
       <article className="max-w-3xl mx-auto p-5">
         <div className="flex items-center mb-1 mt-8 justify-center space-x-2">
-          <img
+          <Image
             className="h-10 w-10 rounded-full"
             src={branch.logoImg!}
             alt=""
+            height={60}
+            width={60}
           />
           <h1 className="text-3xl flex items-end">{branch.name}</h1>
         </div>
@@ -94,15 +99,17 @@ function Branch({ branch }: Props) {
             key={unit._id}
             href={`${branch.slug.current}/unit/${unit.slug.current}`}
           >
-            <div className="w-full mx-[1.5rem] sm:w-[19rem] md:sm:w-[22rem] justify-between sm:mx-[.5rem] border rounded-lg group cursor-pointer overflow-hidden m-3 shadow">
-              <img
+            <div className="w-[22rem] mx-[1rem] sm:w-[19rem] md:w-[22rem] justify-between sm:mx-[.5rem] border rounded-lg group cursor-pointer overflow-hidden m-3 shadow">
+              <Image
                 className="h-60 w-full object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out"
                 src={unit.image!}
                 alt=""
+                height={250}
+                width={350}
               />
               <div className="flex flex-col justify-between py-5 px-2 bg-white">
                 <div className="flex justify-between pb-2">
-                  <div className="flex-col">
+                  <div className="flex-col w-[14rem]">
                     <p className="font-bold text-lg">{unit.title}</p>
                     <p className="text-gray-500 text-xs">{branch.name}</p>
                     <div className="flex space-x-2 font-italic text-md">
@@ -131,11 +138,15 @@ function Branch({ branch }: Props) {
                       )}
                     </div>
                   </div>
-                  <img
-                    className="h-12 w-12 rounded-full"
-                    src={branch.logoImg!}
-                    alt=""
-                  />
+                  <div>
+                    <Image
+                      className="h-12 w-12 rounded-full"
+                      src={branch.logoImg!}
+                      alt=""
+                      height={50}
+                      width={50}
+                    />
+                  </div>
                 </div>
                 <div>
                   <p className="text-md">{truncate(unit.description, 150)}</p>
