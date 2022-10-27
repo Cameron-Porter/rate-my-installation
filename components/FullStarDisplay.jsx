@@ -5,53 +5,46 @@ function FullStarDisplay({ overall, ba, bl, ho, lc, lr, sd }) {
   return (
     <div>
       {overall ? (
-        <div>
-          <div className="flex items-center space-x-2">
-            <p>Overall Rating:</p>
-            <span>
-              <StarDisplay h={20} w={20} initRating={overall} />
-            </span>
-            <span>({overall} / 5)</span>
-          </div>
+        <div className="">
           <div className="flex justify-center mt-6">
             <h2 className="underline text-xl">Breakdown:</h2>
           </div>
-          <div className="flex justify-around my-6">
+          <div className="flex justify-between space-x-5 my-6">
             <div className="space-y-5">
-              <p className="">
-                Base Amenities: <span>({ba} / 5)</span>
+              <p className="flex items-center">
+                <span className="pr-2">Base Amenities:</span>
                 <span>
                   <StarDisplay initRating={ba} h={20} w={20} />
                 </span>
               </p>
-              <p className="">
-                Base Logistics: <span>({bl} / 5)</span>
+              <p className="flex items-center">
+                <span className="pr-2">Base Logistics:</span>
                 <span>
                   <StarDisplay initRating={bl} h={20} w={20} />
                 </span>
               </p>
-              <p className="">
-                Housing Options: <span>({ho} / 5)</span>
+              <p className="flex items-center">
+                <span className="pr-2">Housing Options:</span>
                 <span>
                   <StarDisplay initRating={ho} h={20} w={20} />
                 </span>
               </p>
             </div>
             <div className="space-y-5">
-              <p className="">
-                Local Community: <span>({lc} / 5)</span>
+              <p className="flex items-center">
+                <span className="pr-2">Local Community:</span>
                 <span>
                   <StarDisplay initRating={lc} h={20} w={20} />
                 </span>
               </p>
-              <p className="">
-                Local Recreation: <span>({lr} / 5)</span>
+              <p className="flex items-center">
+                <span className="pr-2">Local Recreation:</span>
                 <span>
                   <StarDisplay initRating={lr} h={20} w={20} />
                 </span>
               </p>
-              <p className="">
-                School District: <span>({sd} / 5)</span>
+              <p className="flex items-center">
+                <span className="pr-2">School District:</span>
                 <span>
                   <StarDisplay initRating={sd} h={20} w={20} />
                 </span>

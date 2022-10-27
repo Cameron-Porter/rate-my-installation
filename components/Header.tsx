@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import rmi from "../public/media/black_logo.png";
 import React from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
 
@@ -12,7 +11,7 @@ const styles = {
 function Header() {
   const { data: session } = useSession();
   return (
-    <header className="flex justify-between p-5 mx-auto">
+    <header className="flex justify-between px-5 py-3 mx-auto shadow-2xl rounded-lg">
       <div className="flex items-center sm:space-x-10">
         <Link href="/">
           <Image

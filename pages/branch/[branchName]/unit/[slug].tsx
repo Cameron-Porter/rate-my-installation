@@ -1,13 +1,13 @@
 import { GetStaticProps } from "next/types";
-import React, { useState } from "react";
+import React from "react";
 import Header from "../../../../components/Header";
-import { sanityClient, urlFor } from "../../../../sanity";
+import { sanityClient } from "../../../../sanity";
 import { Unit } from "../../../../typings";
-import { useSession } from "next-auth/react";
 import Form from "../../../../components/Form";
 import FullStarDisplay from "../../../../components/FullStarDisplay";
 import Comments from "../../../../components/Comments";
 import Image from "next/image";
+import StarDisplay from "../../../../components/StarDisplay";
 
 interface Props {
   unit: Unit;
@@ -113,51 +113,63 @@ function Unit({ unit }: Props) {
         <meta property="og:image" content={unit.image!} />
       </head>
       <Header />
-      <Image
-        className="w-full h-[20rem] object-cover"
-        src={unit.image}
-        alt=""
-        height={300}
-        width={1450}
-      />
-      <article className="max-w-3xl mx-auto p-5">
-        <div className="flex items-center mb-1 mt-8 justify-between">
-          <div className="space-x-2 flex items-center">
-            <Image
-              className="h-10 w-10 rounded-full"
-              src={unit.branch.logoImg!}
-              alt=""
-              height={50}
-              width={50}
-            />
-            <h1 className="text-3xl flex items-end">{unit.title}</h1>
-          </div>
-          <p className="font-extralight text-sm">
-            <span
-              className={styles.textColor[unit.branch.name as keyof object]}
-            >
-              {unit.branch.name}
-            </span>
-          </p>
-        </div>
-        <div className="text-sm">
-          <FullStarDisplay
-            overall={unit.avgOverall}
-            ba={unit.avgBaseAmenities}
-            bl={unit.avgBaseLogistics}
-            ho={unit.avgHousingOptions}
-            lc={unit.avgLocalCommunity}
-            lr={unit.avgLocalRecreation}
-            sd={unit.avgSchoolDistrict}
+      <div className="flex mt-7 mx-5 justify-around items-center flex-wrap">
+        <div>
+          <Image
+            className="object-cover"
+            src={unit.image}
+            alt=""
+            height={400}
+            width={600}
           />
         </div>
-
-        <h2 className="text-xl font-light text-gray-500 mb-2 mt-7">
+        <div className="px-5">
+          <div className="flex items-center justify-around">
+            <div className="flex mb-1 flex-col">
+              <div className="space-x-2 flex">
+                <h1 className="text-3xl flex items-end">{unit.title}</h1>
+              </div>
+              <p className="flex font-extralight items-center space-x-1 text-sm">
+                <Image
+                  className="h-10 w-10 rounded-full"
+                  src={unit.branch.logoImg!}
+                  alt=""
+                  height={30}
+                  width={30}
+                />
+                <span
+                  className={styles.textColor[unit.branch.name as keyof object]}
+                >
+                  {unit.branch.name}
+                </span>
+              </p>
+            </div>
+            <div className="flex space-x-1 items-center">
+              <StarDisplay initRating={unit.avgOverall} h={20} w={20} />
+              <span className="text-sm text-gray-500">
+                ({unit.avgOverall}/5)
+              </span>
+            </div>
+          </div>
+          <div className="text-sm">
+            <FullStarDisplay
+              overall={unit.avgOverall}
+              ba={unit.avgBaseAmenities}
+              bl={unit.avgBaseLogistics}
+              ho={unit.avgHousingOptions}
+              lc={unit.avgLocalCommunity}
+              lr={unit.avgLocalRecreation}
+              sd={unit.avgSchoolDistrict}
+            />
+          </div>
+        </div>
+      </div>
+      <div className="flex justify-center">
+        <h2 className="text-xl max-w-3xl p-5 font-light text-gray-500 mb-2 mt-7">
           {unit.description}
         </h2>
-      </article>
+      </div>
       <hr className={styles.lineStyle[unit.branch.name as keyof object]} />
-
       <Form unit={unit} />
 
       {/* Comments */}
