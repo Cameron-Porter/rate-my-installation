@@ -1,6 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import rmi from "../public/media/white_logo.png";
 
 function Footer() {
   return (
