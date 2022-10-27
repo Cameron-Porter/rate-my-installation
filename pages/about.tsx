@@ -26,7 +26,7 @@ function about() {
         <meta property="og:type" content="website" />
         <meta
           property="og:image"
-          content={`https://cdn.sanity.io/images/07k2mc8t/production/d1f10bb9502e1153c5d48b9b47adb09edacf8981-2048x1367.jpg`}
+          content={`https://res.cloudinary.com/dz58encu1/image/upload/q_auto,f_auto/v1666793434/286590861_378543417641534_6470475454945430459_n_zbvy8f.jpg`}
         />
         <meta
           property="og:image:alt"
@@ -34,7 +34,7 @@ function about() {
         />
       </Head>
       <Header />
-      <div className="justify-between items-center bg-[url('https://cdn.sanity.io/images/07k2mc8t/production/d1f10bb9502e1153c5d48b9b47adb09edacf8981-2048x1367.jpg')]  bg-cover bg-center lg:py-0 saturate-150">
+      <div className="justify-between items-center bg-[url('https://res.cloudinary.com/dz58encu1/image/upload/w_1450/q_auto,f_auto/v1666793434/286590861_378543417641534_6470475454945430459_n_zbvy8f.jpg')]  bg-cover bg-center lg:py-0 saturate-150">
         <div className="flex items-center bg-gradient-to-b from-white via-transparent to-white h-[30rem] sm:h-[40rem] w-full">
           <div className="mx-auto flex flex-col h-[10rem] sm:ml-[2rem] md:ml-[3rem] md:h-[15rem] items-center justify-center max-w-lg bg-gradient-radial from-black rounded-3xl">
             <h1 className="text-center sm:text-left text-7xl pt-[1rem] px-[3rem] text-white font-bold max-w-xl">

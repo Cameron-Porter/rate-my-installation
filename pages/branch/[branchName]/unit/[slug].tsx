@@ -7,6 +7,7 @@ import { useSession } from "next-auth/react";
 import Form from "../../../../components/Form";
 import FullStarDisplay from "../../../../components/FullStarDisplay";
 import Comments from "../../../../components/Comments";
+import Image from "next/image";
 
 interface Props {
   unit: Unit;
@@ -112,14 +113,22 @@ function Unit({ unit }: Props) {
         <meta property="og:image" content={unit.image!} />
       </head>
       <Header />
-      <img className="w-full h-[20rem] object-cover" src={unit.image} alt="" />
+      <Image
+        className="w-full h-[20rem] object-cover"
+        src={unit.image}
+        alt=""
+        height={300}
+        width={1450}
+      />
       <article className="max-w-3xl mx-auto p-5">
         <div className="flex items-center mb-1 mt-8 justify-between">
-          <div className="space-x-2 flex">
-            <img
+          <div className="space-x-2 flex items-center">
+            <Image
               className="h-10 w-10 rounded-full"
               src={unit.branch.logoImg!}
               alt=""
+              height={50}
+              width={50}
             />
             <h1 className="text-3xl flex items-end">{unit.title}</h1>
           </div>

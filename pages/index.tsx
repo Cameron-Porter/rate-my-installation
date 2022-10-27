@@ -1,9 +1,10 @@
 import Head from "next/head";
 import Link from "next/link";
+import Image from "next/image";
 import Banner from "../components/Banner";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { sanityClient, urlFor } from "../sanity";
+import { sanityClient } from "../sanity";
 import { Unit, Branch } from "../typings";
 import StarDisplay from "../components/StarDisplay";
 
@@ -61,10 +62,12 @@ export default function Home({ topUnits, bottomUnits, branches }: Props) {
         {branches.map((branch) => (
           <Link key={branch._id} href={`/branch/${branch.slug.current}`}>
             <div className="cursor-pointer group overflow-hidden text-center m-3 w-[9rem]">
-              <img
+              <Image
                 className="h-[9rem] w-auto mx-auto grayscale object-conatin group-hover:scale-105 transition-transform duration-300 ease-in-out group-hover:grayscale-0"
                 src={branch.logoImg!}
                 alt=""
+                height={100}
+                width={100}
               />
               <div>
                 <p className="font-bold text-md flex flex-wrap">
@@ -86,15 +89,17 @@ export default function Home({ topUnits, bottomUnits, branches }: Props) {
             key={unit._id}
             href={`branch/${unit.branch.slug.current}/unit/${unit.slug.current}`}
           >
-            <div className="w-full mx-[1.5rem] sm:w-[19rem] md:sm:w-[22rem] justify-between sm:mx-[.5rem] border rounded-lg group cursor-pointer overflow-hidden m-3 shadow">
-              <img
+            <div className="w-[22rem] mx-[1rem] sm:w-[19rem] md:w-[22rem] justify-between sm:mx-[.5rem] border rounded-lg group cursor-pointer overflow-hidden m-3 shadow">
+              <Image
                 className="h-60 w-full object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out"
                 src={unit.image!}
                 alt=""
+                height={250}
+                width={350}
               />
               <div className="flex flex-col justify-between py-5 px-2 bg-white">
                 <div className="flex justify-between pb-2">
-                  <div className="flex-col">
+                  <div className="flex-col w-[14rem]">
                     <p className="font-bold text-lg">{unit.title}</p>
                     <p className="text-gray-500 text-xs">{unit.branch.name}</p>
                     <div className="flex space-x-2 font-italic text-md">
@@ -117,11 +122,15 @@ export default function Home({ topUnits, bottomUnits, branches }: Props) {
                       )}
                     </div>
                   </div>
-                  <img
-                    className="h-12 w-12 rounded-full"
-                    src={unit.branch.logoImg!}
-                    alt=""
-                  />
+                  <div className="">
+                    <Image
+                      className="rounded-full"
+                      src={unit.branch.logoImg!}
+                      alt=""
+                      height={50}
+                      width={50}
+                    />
+                  </div>
                 </div>
                 <div>
                   <p className="text-md">{truncate(unit.description, 150)}</p>
@@ -143,15 +152,17 @@ export default function Home({ topUnits, bottomUnits, branches }: Props) {
             key={unit._id}
             href={`/branch/${unit.branch.slug.current}/unit/${unit.slug.current}`}
           >
-            <div className="w-full mx-[1.5rem] sm:w-[19rem] md:sm:w-[22rem] justify-between sm:mx-[.5rem] border rounded-lg group cursor-pointer overflow-hidden m-3 shadow">
-              <img
+            <div className="w-[22rem] mx-[1rem] sm:w-[19rem] md:w-[22rem] justify-between sm:mx-[.5rem] border rounded-lg group cursor-pointer overflow-hidden m-3 shadow">
+              <Image
                 className="h-60 w-full object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out"
                 src={unit.image!}
                 alt=""
+                height={250}
+                width={350}
               />
               <div className="flex flex-col justify-between py-5 px-2 bg-white">
                 <div className="flex justify-between pb-2">
-                  <div className="flex-col">
+                  <div className="flex-col w-[14rem]">
                     <p className="font-bold text-lg">{unit.title}</p>
                     <p className="text-gray-500 text-xs">{unit.branch.name}</p>
                     <div className="flex space-x-2 font-italic text-md">
@@ -174,11 +185,15 @@ export default function Home({ topUnits, bottomUnits, branches }: Props) {
                       )}
                     </div>
                   </div>
-                  <img
-                    className="h-12 w-12 rounded-full"
-                    src={unit.branch.logoImg!}
-                    alt=""
-                  />
+                  <div className="">
+                    <Image
+                      className="rounded-full"
+                      src={unit.branch.logoImg!}
+                      alt=""
+                      height={50}
+                      width={50}
+                    />
+                  </div>
                 </div>
                 <div>
                   <p className="text-md">{truncate(unit.description, 150)}</p>
