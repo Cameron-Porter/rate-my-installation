@@ -25,7 +25,6 @@ export default function Home({ topUnits, bottomUnits, branches }: Props) {
         <title>Rate My Installation</title>
         <link rel="icon" href="../favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta http-equiv="content-language" content="en-us" />
         <meta
           name="description"
           content={`A place for servicemen and women to share and view reviews of their branch's installations.`}
