@@ -24,6 +24,8 @@ export default function Home({ topUnits, bottomUnits, branches }: Props) {
       <Head>
         <title>Rate My Installation</title>
         <link rel="icon" href="../favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="content-language" content="en-us" />
         <meta
           name="description"
           content={`A place for servicemen and women to share and view reviews of their branch's installations.`}
@@ -43,11 +45,6 @@ export default function Home({ topUnits, bottomUnits, branches }: Props) {
           property="og:image:alt"
           content="Rows of planes lead by a helicopter."
         />
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2802002003003896"
-          crossOrigin="anonymous"
-        ></script>
       </Head>
       <Header />
       <Banner />

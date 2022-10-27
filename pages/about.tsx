@@ -10,6 +10,8 @@ function about() {
       <Head>
         <title>About</title>
         <link rel="icon" href="../favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="content-language" content="en-us" />
         <meta
           name="description"
           content={`Learn about Rate My Installation, and how it hopes to help military personel during their PCS.`}

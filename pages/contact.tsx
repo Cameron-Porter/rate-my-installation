@@ -9,6 +9,8 @@ function contact() {
       <Head>
         <title>Contact</title>
         <link rel="icon" href="../favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="content-language" content="en-us" />
         <meta
           name="description"
           content={`Contact Rate My Installation with quiestions or inquiries regarding installation reviews or the site.`}

@@ -44,6 +44,8 @@ function Branch({ branch }: Props) {
       <head>
         <title>{branch.name} installations for review</title>
         <link rel="icon" href="/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="content-language" content="en-us" />
         <meta
           name="description"
           content={`Select ${branch.name} installations to view and share real reviews from those who have been stationed there.`}
