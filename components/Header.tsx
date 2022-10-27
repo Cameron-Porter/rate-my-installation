@@ -16,7 +16,7 @@ function Header() {
         <Link href="/">
           <Image
             className="w-44 object-contain cursor-pointer"
-            src="https://res.cloudinary.com/dz58encu1/image/upload/v1666793467/black_logo_oynqca.png"
+            src="https://res.cloudinary.com/dz58encu1/image/upload/w_70/q_auto,f_auto/v1666793467/black_logo_oynqca.png"
             alt=""
             width="70"
             height="70"

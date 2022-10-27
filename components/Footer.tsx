@@ -13,7 +13,7 @@ function Footer() {
         <Image
           className="object-contain"
           src={
-            "https://res.cloudinary.com/dz58encu1/image/upload/v1666793469/white_logo_cp06nb.png"
+            "https://res.cloudinary.com/dz58encu1/image/upload/w_70/q_auto,f_auto/v1666793469/white_logo_cp06nb.png"
           }
           alt=""
           width="70"
