@@ -126,7 +126,7 @@ function Unit({ unit }: Props) {
           />
         </div>
         <div className="px-5">
-          <div className="flex items-center justify-around">
+          <div className="flex items-center justify-around flex-wrap">
             <div className="flex mb-1 flex-col">
               <div className="space-x-2 flex">
                 <h1 className="text-3xl flex items-end">{unit.title}</h1>
@@ -175,7 +175,7 @@ function Unit({ unit }: Props) {
       <Form unit={unit} />
 
       {/* Comments */}
-      <div className="p-10 max-w-3xl mx-auto space-y-2">
+      <div className="p-4 max-w-3xl mx-auto space-y-2">
         <h3 className="text-4xl mb-10 text-center">Ratings</h3>
 
         <hr className={styles.lineStyle[unit.branch.name as keyof object]} />
