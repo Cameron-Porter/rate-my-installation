@@ -109,7 +109,9 @@ export default function Home({ topUnits, bottomUnits, branches }: Props) {
                               initRating={unit.avgOverall}
                             />
                           </span>
-                          <span>({unit.avgOverall} / 5)</span>
+                          <span className="hidden sm:block sm:text-sm">
+                            ({unit.avgOverall} / 5)
+                          </span>
                         </div>
                       ) : (
                         <div className="text-sm text-gray-500">
