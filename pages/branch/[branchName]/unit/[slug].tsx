@@ -306,6 +306,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       unit,
     },
-    revalidate: 360, // 28800 Revalidates data every 8hrs, updates old cached version...ISR implementation
+    revalidate: 300, // 28800 Revalidates data every 8hrs, updates old cached version...ISR implementation
   };
 };
