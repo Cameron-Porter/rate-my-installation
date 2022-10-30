@@ -57,4 +57,16 @@ export default {
       });
     },
   },
+  orderings: [
+    {
+      title: "Units A-Z",
+      name: "unitsAsc",
+      by: [{ field: "title", direction: "asc" }],
+    },
+    {
+      title: "Units Z-A",
+      name: "unitsDesc",
+      by: [{ field: "title", direction: "desc" }],
+    },
+  ],
 };

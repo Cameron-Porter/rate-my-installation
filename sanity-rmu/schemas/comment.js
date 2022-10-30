@@ -64,14 +64,37 @@ export default {
   ],
   preview: {
     select: {
-      title: "comment",
-      unit: "unit.name",
+      approved: "approved",
+      title: "unit.title",
+      media: "unit.mainImage",
     },
     prepare(selection) {
-      const { unit } = selection;
+      const { title, approved } = selection;
       return Object.assign({}, selection, {
-        subtitle: unit && `by ${unit}`,
+        subtitle: title && `is approved: ${approved}`,
       });
     },
   },
+  orderings: [
+    {
+      title: "Newest Comments",
+      name: "commentsDesc",
+      by: [{ field: "_createdAt", direction: "desc" }],
+    },
+    {
+      title: "To Be Approved Comments",
+      name: "toApproveDesc",
+      by: [{ field: "approved", direction: "desc" }],
+    },
+    {
+      title: "By Unit A-Z",
+      name: "unitsAsc",
+      by: [{ field: "unit.title", direction: "asc" }],
+    },
+    {
+      title: "By Unit Z-A",
+      name: "unitsDesc",
+      by: [{ field: "unit.title", direction: "desc" }],
+    },
+  ],
 };
