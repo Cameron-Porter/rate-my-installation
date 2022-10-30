@@ -230,7 +230,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         _type == "comment" &&
         unit._ref == ^._id &&
         approved == true
-      ].schoolDistrict),2),
+      ].schoolDistrict),1),
     } | order(title asc)
     }`;
 

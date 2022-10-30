@@ -19,6 +19,7 @@ function truncate(str: string, n: number) {
 }
 
 export default function Home({ topUnits, bottomUnits, branches }: Props) {
+  console.log(topUnits);
   return (
     <div className="">
       <Head>
@@ -140,7 +141,7 @@ export default function Home({ topUnits, bottomUnits, branches }: Props) {
       </div>
 
       {/** Units Listed */}
-      <div className="text-3xl py-[5rem]">
+      {/* <div className="text-3xl py-[5rem]">
         <h2 className="text-center">Lowest 10 Rated Units:</h2>
         <hr className="max-w-xl mx-auto border my-5 border-blue-500" />
       </div>
@@ -200,7 +201,7 @@ export default function Home({ topUnits, bottomUnits, branches }: Props) {
             </div>
           </Link>
         ))}
-      </div>
+      </div> */}
       <Footer />
     </div>
   );
@@ -218,7 +219,8 @@ export const getStaticProps = async () => {
     description,
     image,
     slug,
-    'avgOverall': round(math::avg(*[
+    'avgOverall': select(
+      count(*[_type == 'comment' && references(^._id)]) > 0 => round(math::avg(*[
       _type == "comment" &&
       unit._ref == ^._id &&
       approved == true
@@ -242,46 +244,49 @@ export const getStaticProps = async () => {
       _type == "comment" &&
       unit._ref == ^._id &&
       approved == true
-    ].schoolDistrict),2),
-  } | order(avgOverall asc)[0...10]`;
+    ].schoolDistrict),1),
+    0),
+  } | order(avgOverall desc)[0...10]`;
 
-  const queryBottomUnits = `*[_type == "unit"]{
-    _id,
-    title,
-    branch-> {
-      name,
-      logoImg,
-      slug
-    },
-    description,
-    image,
-    slug,
-    'avgOverall': round(math::avg(*[
-      _type == "comment" &&
-      unit._ref == ^._id &&
-      approved == true
-    ].baseAmenities + *[
-      _type == "comment" &&
-      unit._ref == ^._id &&
-      approved == true
-    ].baseLogistics + *[
-      _type == "comment" &&
-      unit._ref == ^._id &&
-      approved == true
-    ].housingOptions + *[
-      _type == "comment" &&
-      unit._ref == ^._id &&
-      approved == true
-    ].localCommunity + *[
-      _type == "comment" &&
-      unit._ref == ^._id &&
-      approved == true
-    ].localRecreation + *[
-      _type == "comment" &&
-      unit._ref == ^._id &&
-      approved == true
-    ].schoolDistrict),2),
-  } | order(avgOverall desc, title asc)[0...10]`;
+  // const queryBottomUnits = `*[_type == "unit"]{
+  //   _id,
+  //   title,
+  //   branch-> {
+  //     name,
+  //     logoImg,
+  //     slug
+  //   },
+  //   description,
+  //   image,
+  //   slug,
+  //   'avgOverall': select(
+  //     count(*[_type == 'comment' && references(^._id)]) > 0 => round(math::avg(*[
+  //     _type == "comment" &&
+  //     unit._ref == ^._id &&
+  //     approved == true
+  //   ].baseAmenities + *[
+  //     _type == "comment" &&
+  //     unit._ref == ^._id &&
+  //     approved == true
+  //   ].baseLogistics + *[
+  //     _type == "comment" &&
+  //     unit._ref == ^._id &&
+  //     approved == true
+  //   ].housingOptions + *[
+  //     _type == "comment" &&
+  //     unit._ref == ^._id &&
+  //     approved == true
+  //   ].localCommunity + *[
+  //     _type == "comment" &&
+  //     unit._ref == ^._id &&
+  //     approved == true
+  //   ].localRecreation + *[
+  //     _type == "comment" &&
+  //     unit._ref == ^._id &&
+  //     approved == true
+  //   ].schoolDistrict),1),
+  //   null),
+  // } | order(avgOverall asc, title asc)[0...10]`;
 
   const queryBranches = `*[_type == "branch"]{
     _id,
@@ -291,13 +296,13 @@ export const getStaticProps = async () => {
   } | order(name asc)`;
 
   const topUnits = await sanityClient.fetch(queryTopUnits);
-  const bottomUnits = await sanityClient.fetch(queryBottomUnits);
+  // const bottomUnits = await sanityClient.fetch(queryBottomUnits);
   const branches = await sanityClient.fetch(queryBranches);
 
   return {
     props: {
       topUnits,
-      bottomUnits,
+      // bottomUnits,
       branches,
     },
   };
