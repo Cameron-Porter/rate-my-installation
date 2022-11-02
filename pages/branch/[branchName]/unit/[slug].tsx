@@ -129,7 +129,9 @@ function Unit({ unit }: Props) {
           <div className="flex items-center justify-around flex-wrap">
             <div className="flex mb-1 flex-col">
               <div className="space-x-2 flex">
-                <h1 className="text-3xl flex items-end">{unit.title}</h1>
+                <h1 className="text-3xl flex items-end flex-wrap sm:w-[25rem]">
+                  {unit.title}
+                </h1>
               </div>
               <p className="flex font-extralight items-center space-x-1 text-sm">
                 <Image
@@ -146,12 +148,16 @@ function Unit({ unit }: Props) {
                 </span>
               </p>
             </div>
-            <div className="flex space-x-1 items-center">
-              <StarDisplay initRating={unit.avgOverall} h={20} w={20} />
-              <span className="text-sm text-gray-500">
-                ({unit.avgOverall}/5)
-              </span>
-            </div>
+            {unit.avgOverall ? (
+              <div className="flex space-x-1 items-center">
+                <StarDisplay initRating={unit.avgOverall} h={20} w={20} />
+                <span className="text-sm text-gray-500">
+                  ({unit.avgOverall}/5)
+                </span>
+              </div>
+            ) : (
+              <></>
+            )}
           </div>
           <div className="text-sm">
             <FullStarDisplay
