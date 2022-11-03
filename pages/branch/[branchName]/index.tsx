@@ -116,7 +116,7 @@ function Branch({ branch }: Props) {
                     <p className="text-gray-500 text-xs">{branch.name}</p>
                     <div className="flex space-x-2 font-italic text-md">
                       {unit.avgOverall ? (
-                        <div className="flex items-center space-x-2">
+                        <div className="flex items-center space-x-1">
                           <span
                             className={
                               styles.textColor[branch.name as keyof object]
@@ -124,14 +124,16 @@ function Branch({ branch }: Props) {
                           >
                             Rated:{" "}
                           </span>
-                          <span>
+                          <span className="">
                             <StarDisplay
                               h={20}
                               w={20}
                               initRating={unit.avgOverall}
                             />
                           </span>
-                          <span>({unit.avgOverall} / 5)</span>
+                          <span className="text-xs">
+                            ({unit.avgOverall} / 5)
+                          </span>
                         </div>
                       ) : (
                         <div className="text-sm text-gray-500">

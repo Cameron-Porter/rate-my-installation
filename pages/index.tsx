@@ -101,16 +101,16 @@ export default function Home({ topUnits, bottomUnits, branches }: Props) {
                     <p className="text-gray-500 text-xs">{unit.branch.name}</p>
                     <div className="flex space-x-2 font-italic text-md">
                       {unit.avgOverall ? (
-                        <div className="flex items-center space-x-2">
+                        <div className="flex items-center space-x-1">
                           <span className="">Rated: </span>
-                          <span>
+                          <span className="">
                             <StarDisplay
                               h={20}
                               w={20}
                               initRating={unit.avgOverall}
                             />
                           </span>
-                          <span className="hidden sm:block sm:text-sm">
+                          <span className="hidden sm:block text-xs">
                             ({unit.avgOverall} / 5)
                           </span>
                         </div>

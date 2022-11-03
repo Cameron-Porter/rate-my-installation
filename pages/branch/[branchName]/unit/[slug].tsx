@@ -125,11 +125,11 @@ function Unit({ unit }: Props) {
             width={600}
           />
         </div>
-        <div className="px-5">
-          <div className="flex items-center justify-around flex-wrap">
-            <div className="flex mb-1 flex-col">
+        <div className="px-5 mt-3 max-w-3xl">
+          <div className="flex items-center justify-center xs:justify-between flex-wrap">
+            <div className="flex mb-1 flex-col mx-5">
               <div className="space-x-2 flex">
-                <h1 className="text-3xl flex items-end flex-wrap sm:w-[25rem]">
+                <h1 className="text-3xl flex items-end flex-wrap xs:w-[25rem]">
                   {unit.title}
                 </h1>
               </div>
@@ -149,7 +149,7 @@ function Unit({ unit }: Props) {
               </p>
             </div>
             {unit.avgOverall ? (
-              <div className="flex space-x-1 items-center">
+              <div className="flex space-x-1 items-center mx-5">
                 <StarDisplay initRating={unit.avgOverall} h={20} w={20} />
                 <span className="text-sm text-gray-500">
                   ({unit.avgOverall}/5)
