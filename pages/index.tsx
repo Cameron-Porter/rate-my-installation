@@ -19,7 +19,6 @@ function truncate(str: string, n: number) {
 }
 
 export default function Home({ topUnits, bottomUnits, branches }: Props) {
-  console.log(topUnits);
   return (
     <div className="">
       <Head>

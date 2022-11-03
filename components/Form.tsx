@@ -190,9 +190,6 @@ function Form({ unit }: Props) {
                     w={30}
                     initRating={5}
                     onRatingChanged={(newRating: number) => {
-                      console.log(
-                        `NEW RATING (${newRating}) DETECTED FOR 2.. SAVING TO DB`
-                      );
                       setBaseAmenitiesRating(newRating);
                     }}
                   />
