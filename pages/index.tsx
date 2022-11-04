@@ -304,6 +304,6 @@ export const getStaticProps = async () => {
       // bottomUnits,
       branches,
     },
-    revalidate: 300,
+    revalidate: 60,
   };
 };

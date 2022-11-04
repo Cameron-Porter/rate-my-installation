@@ -8,8 +8,4 @@ module.exports = {
     locales: ["en"],
     defaultLocale: "en",
   },
-  experimental: {
-    // Defaults to 50MB
-    isrMemoryCacheSize: 0,
-  },
 };

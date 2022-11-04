@@ -250,6 +250,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       branch,
     },
-    revalidate: 300,
+    revalidate: 60,
   };
 };
