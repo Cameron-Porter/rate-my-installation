@@ -49,7 +49,7 @@ function about() {
         <h2 className="text-center mx-auto underline text-5xl pt-10 pb-[3rem]">
           Our Story
         </h2>
-        <div className="px-[3rem] space-y-5 text-lg">
+        <div className="px-[3rem] space-y-5 text-lg max-w-3xl mx-auto">
           <p>
             Veteran owned and operated,{" "}
             <span className="italic">Rate My Installation</span> was born to
