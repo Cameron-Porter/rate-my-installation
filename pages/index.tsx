@@ -48,7 +48,7 @@ export default function Home({ topUnits, bottomUnits, branches }: Props) {
       <Header />
       <Banner />
       {/** Branches Listed */}
-      <div className="text-3xl py-[5rem]">
+      <div className="text-3xl py-[5rem] max-w-3xl mx-auto p-5">
         <h2 className="text-center">
           Select a branch below to refine your search:
         </h2>
@@ -75,7 +75,7 @@ export default function Home({ topUnits, bottomUnits, branches }: Props) {
         ))}
       </div>
       {/** Units Listed */}
-      <div className="text-3xl py-[5rem]">
+      <div className="text-3xl py-[5rem] max-w-3xl mx-auto p-5">
         <h2 className="text-center">Top 10 Rated Units:</h2>
         <hr className="max-w-xl mx-auto border my-5 border-blue-500" />
       </div>
