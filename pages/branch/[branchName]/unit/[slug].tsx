@@ -116,9 +116,9 @@ function Unit({ unit }: Props) {
       </head>
       <Header />
       <div className="flex mt-7 mx-5 justify-around items-center flex-wrap">
-        <div>
+        <div className="">
           <Image
-            className="object-cover"
+            className="object-cover rounded-lg"
             src={unit.image}
             alt=""
             height={400}

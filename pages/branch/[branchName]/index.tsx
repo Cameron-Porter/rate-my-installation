@@ -101,7 +101,7 @@ function Branch({ branch }: Props) {
             key={unit._id}
             href={`${branch.slug.current}/unit/${unit.slug.current}`}
           >
-            <div className="w-[22rem] mx-[1rem] sm:w-[19rem] md:w-[22rem] justify-between sm:mx-[.5rem] border rounded-lg group cursor-pointer overflow-hidden m-3 shadow">
+            <div className="w-[22rem] mx-[1rem] sm:w-[19rem] md:w-[22rem] justify-between sm:mx-[.5rem] border rounded-lg group cursor-pointer overflow-hidden m-3 shadow h-[31rem]">
               <Image
                 className="h-60 w-full object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out"
                 src={unit.image!}
