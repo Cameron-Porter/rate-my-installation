@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import logo from "../public/media/white_logo.png";
 
 function Footer() {
   return (
@@ -9,15 +10,13 @@ function Footer() {
           Copyright © 2022 Porter. All rights reserved.
         </h3>
       </div>
-      <div>
+      <div className="rounded-full">
         <Image
           className="object-contain"
-          src={
-            "https://res.cloudinary.com/dz58encu1/image/upload/w_70/q_auto,f_auto/v1666793469/white_logo_cp06nb.png"
-          }
+          src={logo}
           alt=""
-          width="70"
-          height="70"
+          width="100"
+          height="100"
         />
       </div>
     </div>

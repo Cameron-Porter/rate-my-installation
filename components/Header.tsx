@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import React from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
+import logo from "../public/media/black_logo.png";
 
 const styles = {
   navLinks:
@@ -15,11 +16,11 @@ function Header() {
       <div className="flex items-center sm:space-x-10">
         <Link href="/">
           <Image
-            className="w-[5rem] object-contain cursor-pointer"
-            src="https://res.cloudinary.com/dz58encu1/image/upload/w_70/q_auto,f_auto/v1666793467/black_logo_oynqca.png"
+            className="w-[5rem] object-contain cursor-pointer rounded-full"
+            src={logo}
             alt=""
-            width="40"
-            height="40"
+            width="100"
+            height="100"
           />
         </Link>
         <div className="flex sm:space-x-10">
