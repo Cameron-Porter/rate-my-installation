@@ -186,8 +186,8 @@ function Form({ unit }: Props) {
                     value={baseAmenitiesRating}
                   />
                   <Stars
-                    h={30}
-                    w={30}
+                    h={20}
+                    w={20}
                     initRating={5}
                     onRatingChanged={(newRating: number) => {
                       setBaseAmenitiesRating(newRating);
@@ -204,8 +204,8 @@ function Form({ unit }: Props) {
                     value={baseLogisticsRating}
                   />
                   <Stars
-                    h={30}
-                    w={30}
+                    h={20}
+                    w={20}
                     initRating={5}
                     onRatingChanged={(rating: number) => {
                       setBaseLogisticsRating(rating);
@@ -222,8 +222,8 @@ function Form({ unit }: Props) {
                     value={housingOptionsRating}
                   />
                   <Stars
-                    h={30}
-                    w={30}
+                    h={20}
+                    w={20}
                     initRating={5}
                     onRatingChanged={(rating: number) => {
                       setHousingOptionsRating(rating);
@@ -242,8 +242,8 @@ function Form({ unit }: Props) {
                     value={localCommunityRating}
                   />
                   <Stars
-                    h={30}
-                    w={30}
+                    h={20}
+                    w={20}
                     initRating={5}
                     onRatingChanged={(rating: number) => {
                       setLocalCommunityRating(rating);
@@ -260,8 +260,8 @@ function Form({ unit }: Props) {
                     value={localRecreationRating}
                   />
                   <Stars
-                    h={30}
-                    w={30}
+                    h={20}
+                    w={20}
                     initRating={5}
                     onRatingChanged={(rating: number) => {
                       setLocalRecreationRating(rating);
@@ -278,8 +278,8 @@ function Form({ unit }: Props) {
                     value={schoolDistrictRating}
                   />
                   <Stars
-                    h={30}
-                    w={30}
+                    h={20}
+                    w={20}
                     initRating={5}
                     onRatingChanged={(rating: number) => {
                       setSchoolDistrictRating(rating);

@@ -24,7 +24,7 @@ function Stars({ initRating, onRatingChanged, h, w }: Props) {
   }
 
   return (
-    <div className="flex items-center space-x-3 my-1">
+    <div className="flex items-center space-x-1 my-1">
       {_.times(5, (index: number) => (
         <Image
           className=""
