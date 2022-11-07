@@ -11,11 +11,11 @@ function Banner() {
         height={300}
         width={1450}
       />
-      <div className="absolute bottom-0 bg-black bg-opacity-50 h-full w-full p-20">
-        <h1 className="text-center sm:text-left text-6xl pt-[1rem] px-[3rem] text-white font-bold max-w-xl">
+      <div className="absolute bottom-0 bg-black bg-opacity-50 h-full w-full py-20">
+        <h1 className="text-center text-5xl sm:text-left sm:text-6xl pt-[1rem] px-[2rem] text-white font-bold max-w-xl">
           Rate My Installation
         </h1>
-        <h2 className="hidden text-xl px-[3rem] pb-[1rem] text-white font-bold md:block">
+        <h2 className="hidden text-xl px-[2rem] pb-[1rem] text-white font-bold md:block">
           Helping you plan your next move through first hand insights.
         </h2>
       </div>

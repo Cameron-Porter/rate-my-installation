@@ -6,7 +6,7 @@ import logo from "../public/media/black_logo.png";
 
 const styles = {
   navLinks:
-    "cursor-pointer bg-left-bottom bg-gradient-to-r from-yellow-900 to-yellow-900 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out text-xl p-3",
+    "cursor-pointer bg-left-bottom bg-gradient-to-r from-slate-300 to-slate-700 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out text-xl p-3",
 };
 
 function Header() {

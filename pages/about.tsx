@@ -44,16 +44,19 @@ function about() {
           height={300}
           width={1450}
         />
-        <div className="absolute bottom-0 bg-black bg-opacity-50 h-full w-full p-20">
-          <h1 className="text-center sm:text-left text-7xl pt-[1rem] px-[3rem] text-white font-bold max-w-xl">
+        <div className="absolute bottom-0 bg-black bg-opacity-50 h-full w-full py-20">
+          <h1 className="text-center sm:text-left text-7xl pt-[1rem] px-[2rem] text-white font-bold max-w-xl">
             About Us!
           </h1>
         </div>
       </div>
-      <div className="flex flex-col width-full">
-        <h2 className="text-center mx-auto underline text-5xl pt-10 pb-[3rem]">
-          Our Story
-        </h2>
+      <div className="flex flex-col width-full justify-center">
+        <div className="max-w-3xl w-[70%] mx-auto">
+          <h2 className="text-center mx-auto text-5xl pt-10 pb-[1rem]">
+            Our Story
+          </h2>
+          <hr className="max-w-xl mx-auto border mb-5 border-blue-500" />
+        </div>
         <div className="px-[3rem] space-y-5 text-lg max-w-3xl mx-auto">
           <p>
             Veteran owned and operated,{" "}

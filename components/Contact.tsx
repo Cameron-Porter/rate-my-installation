@@ -46,7 +46,7 @@ function Contact() {
   };
 
   return (
-    <div>
+    <div className="m-3">
       {session ? (
         submitted ? (
           <div className="flex flex-col p-10 my-10 bg-green-800 text-white max-w-2xl mx-auto rounded-lg">

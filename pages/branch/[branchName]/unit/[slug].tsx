@@ -8,6 +8,7 @@ import FullStarDisplay from "../../../../components/FullStarDisplay";
 import Comments from "../../../../components/Comments";
 import Image from "next/image";
 import StarDisplay from "../../../../components/StarDisplay";
+import Footer from "../../../../components/Footer";
 
 interface Props {
   unit: Unit;
@@ -188,6 +189,7 @@ function Unit({ unit }: Props) {
 
         <Comments unit={unit} />
       </div>
+      <Footer />
     </main>
   );
 }

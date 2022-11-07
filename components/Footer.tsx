@@ -4,7 +4,7 @@ import logo from "../public/media/white_logo.png";
 
 function Footer() {
   return (
-    <div className="mt-[3rem] bg-yellow-900 p-5 text-white flex justify-between align-middle">
+    <div className="mt-[3rem] bg-slate-900  p-5 text-white flex justify-between align-middle">
       <div className="flex align-middle">
         <h3 className="p-2 my-auto">
           Copyright © 2022 Porter. All rights reserved.

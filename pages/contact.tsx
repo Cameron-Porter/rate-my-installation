@@ -45,8 +45,8 @@ function contact() {
           height={300}
           width={1450}
         />
-        <div className="absolute bottom-0 bg-black bg-opacity-50 h-full w-full p-20">
-          <h1 className="text-center sm:text-left text-7xl pt-[1rem] px-[3rem] text-white font-bold max-w-xl">
+        <div className="absolute bottom-0 bg-black bg-opacity-50 h-full w-full py-20">
+          <h1 className="text-center sm:text-left text-7xl pt-[1rem] px-[2rem] text-white font-bold max-w-xl">
             Contact Us!
           </h1>
         </div>
