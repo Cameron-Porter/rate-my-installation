@@ -1,5 +1,7 @@
 import Head from "next/head";
 import React from "react";
+import Image from "next/image";
+import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 
@@ -35,20 +37,21 @@ function contact() {
         />
       </Head>
       <Header />
-      <div className="justify-between items-center bg-[url('https://res.cloudinary.com/dz58encu1/image/upload/w_1450/q_auto,f_auto/v1666793434/286590861_378543417641534_6470475454945430459_n_zbvy8f.jpg')]  bg-cover bg-center lg:py-0 saturate-150">
-        <div className="flex items-center bg-gradient-to-b from-white via-transparent to-white h-[30rem] sm:h-[40rem] w-full">
-          <div className="mx-auto flex flex-col justify-center h-[10rem] sm:ml-[2rem] md:ml-[3rem] md:h-[15rem] items-center max-w-lg bg-gradient-radial from-black rounded-3xl">
-            <h1 className="text-center sm:text-left text-7xl pt-[1rem] px-[3rem] text-white font-bold max-w-xl">
-              Contact Us!
-            </h1>
-          </div>
+      <div className="relative mx-auto my-0">
+        <Image
+          className="w-full h-[20rem] object-cover overflow-hidden"
+          src="https://res.cloudinary.com/dz58encu1/image/upload/w_1450/v1667523369/220802-F-VS152-0032_owepci.jpg"
+          alt=""
+          height={300}
+          width={1450}
+        />
+        <div className="absolute bottom-0 bg-black bg-opacity-50 h-full w-full p-20">
+          <h1 className="text-center sm:text-left text-7xl pt-[1rem] px-[3rem] text-white font-bold max-w-xl">
+            Contact Us!
+          </h1>
         </div>
       </div>
-      <div className="flex flex-col width-full">
-        <h2 className="text-center mx-auto underline text-5xl pt-10 pb-[3rem]">
-          Coming Soon...
-        </h2>
-      </div>
+      <Contact />
       <Footer />
     </div>
   );
