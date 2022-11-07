@@ -18,7 +18,6 @@ export default async function createComment(
   });
 
   try {
-    console.log(email, subject, message);
     await transporter.sendMail({
       from: email,
       to: process.env.SMTP_TO_EMAIL,
