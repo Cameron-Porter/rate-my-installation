@@ -26,7 +26,7 @@ With this project I am learning about static site regeneration as well as increm
 
 ## View Deployment
 
-[Current Deployment](http://rate-my-unit.vercel.app/)
+[Current Deployment](https://www.ratemyinstallation.com/)
 
 ## Deploy your own
 
