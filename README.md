@@ -22,7 +22,7 @@ With this project I am learning about static site regeneration as well as increm
 
 ## View Deployment
 
-[Netlify Deployment](https://rate-my-installation-cameron-porter.vercel.app/)
+[Vercel Deployment](https://rate-my-installation-cameron-porter.vercel.app/)
 
 ## Deploy your own
 
